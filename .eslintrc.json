@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "extends": [
+    "airbnb-base",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "env": {
+    "commonjs": true,
+    "node"    : true,
+    "mocha"   : true,
+    "worker"  : true
+  },
+  "globals": {},
+  "plugins": [],
+  "rules": {
+    "comma-dangle": [2, {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "functions": "ignore"
+    }],
+    "import/no-extraneous-dependencies": [2, {
+      "devDependencies": [ "**/test/**/*.js" ]
+    }],
+    "newline-per-chained-call": 0,
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 0,
+    "semi": [2, "never"]
+  }
+}
