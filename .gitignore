@@ -43,6 +43,9 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# Visual Studio Code
+.vscode/
+
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
 ## Directory-based project format

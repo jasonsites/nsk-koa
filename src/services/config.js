@@ -1,6 +1,6 @@
 
 export default {
   dev: {
-    port: 9999,
+    port: 9000,
   },
 }

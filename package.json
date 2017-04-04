@@ -6,7 +6,6 @@
   "scripts": {
     "preinstall": "npm prune",
     "build": "babel src -d dist",
-    "debug": "node --inspect --debug-brk dist/index.js",
     "prestart": "",
     "serve": "node dist/index.js",
     "start": "npm-run-all --parallel sec start-server",
