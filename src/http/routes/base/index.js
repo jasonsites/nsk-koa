@@ -1,12 +1,10 @@
-import compose from 'koa-compose'
-import Router from 'koa-router'
-import example from '../controllers/example'
+import Router from 'koa-better-router'
+import example from '../../../example'
 // import errorHandler from '../middleware/error-handler'
 
 export default function routes() {
   console.log('Registering routes')
-
-  const router = new Router({ prefix: '' })
+  const router = Router({ prefix: '' }).loadMethods()
 
   router.get('/', async (ctx, next) => {
     ctx.status = 200
@@ -27,5 +25,5 @@ export default function routes() {
   })
 
   console.log('Routes registered')
-  return compose([router.routes(), router.allowedMethods()])
+  return router.middleware()
 }

@@ -1,5 +1,5 @@
-import app from './server'
-import config from './services/config'
+import app from './http/app'
+import config from './http/config'
 
 const env = process.env.NODE_ENV || 'dev'
 const { port } = config[env]

@@ -2,7 +2,7 @@ import Koa from 'koa'
 import logger from 'koa-bunyan-logger'
 
 // import middleware from './middleware'
-import routes from './routes'
+import { baseRouter } from './routes'
 
 const app = new Koa()
 
@@ -13,7 +13,7 @@ app
     log.info(`Request from ${request.ip} for ${path}`)
     await next()
   })
-  .use(routes())
-  .use((ctx) => { ctx.status = 404 })
+  .use(baseRouter())
+  .use(async (ctx) => { ctx.status = 404 })
 
 export default app
