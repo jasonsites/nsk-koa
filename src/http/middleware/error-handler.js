@@ -1,17 +1,14 @@
-/* eslint no-unused-vars: 0 */
+/* eslint-disable no-unused-vars */
 import { wrap } from 'boom'
 
-export default function errorHandler(err, req, res, next) {
-  console.error(err)
-  wrap(err, 500)
-  const { error, message, statusCode } = err.output.payload
-  const body = {
-    errors: [{
-      detail: message,
-      meta: err.data,
-      status: statusCode.toString(),
-      title: error,
-    }],
+export default async function errorHandler(ctx, next) {
+  try {
+    await next()
+  } catch (err) {
+    if (ctx.request.log) ctx.request.log.error(err)
+    else console.error(err)
+    if (!err.isBoom) wrap(err, 500)
+    ctx.status = err.output.payload.statusCode
+    ctx.state.error = err
   }
-  res.status(statusCode).json(body)
 }
