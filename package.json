@@ -5,13 +5,13 @@
   "main": "src/index.js",
   "scripts": {
     "preinstall": "npm prune",
-    "build": "rm -rf dist/ && babel src -d dist",
-    "prestart": "",
+    "build": "rm -rf dist/* && babel src -d dist --copy-files",
+    "coverage": "./node_modules/.bin/babel-node ./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha --recursive test/**/*.test.js test/**/**/*.test.js",
+    "postversion": "npm run build",
+    "release": "npm run build && standard-version",
     "serve": "node dist/index.js",
-    "start": "npm-run-all --parallel sec start-server",
-    "start-server": "nodemon src/index.js --exec babel-node",
-    "poststart": "",
-    "sec": "nsp check",
+    "start": "nodemon src/index.js --exec babel-node",
+    "sec": "nsp check --output summary",
     "test": "mocha --compilers js:babel-register test/tests/**/*.test.js"
   },
   "repository": {
@@ -26,6 +26,9 @@
   },
   "homepage": "https://github.com/jasonsites/nsk-koa#readme",
   "dependencies": {
+    "ajv": "^5.0.1",
+    "app-container": "^0.4.3",
+    "baobab": "^2.4.3",
     "bluebird": "^3.5.0",
     "boom": "^4.2.0",
     "graphql": "^0.9.2",

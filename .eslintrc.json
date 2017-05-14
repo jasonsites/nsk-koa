@@ -1,21 +1,21 @@
 {
   "root": true,
+  "env": {
+    "commonjs": true,
+    "mocha"   : true,
+    "node"    : true,
+    "worker"  : true
+  },
   "extends": [
     "airbnb-base",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
+  "globals": {},
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module"
   },
-  "env": {
-    "commonjs": true,
-    "node"    : true,
-    "mocha"   : true,
-    "worker"  : true
-  },
-  "globals": {},
   "plugins": [],
   "rules": {
     "comma-dangle": [2, {

@@ -1,0 +1,14 @@
+FROM node:boron
+
+ARG NPM_TOKEN
+
+ENV HOME=/opt/app
+WORKDIR /opt/app
+
+RUN printf "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > /opt/app/.npmrc
+COPY package.json npm-shrinkwrap.json /opt/app/
+RUN npm install
+RUN rm -f /opt/app/.npmrc
+COPY . /opt/app
+
+CMD npm run coverage
