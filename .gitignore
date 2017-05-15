@@ -1,4 +1,6 @@
-config
+config/**/*
+!config/config.json
+!config/index.js
 !test/config
 !test/config/*
 dist
