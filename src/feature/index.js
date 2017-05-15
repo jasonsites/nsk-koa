@@ -2,7 +2,7 @@ import Bluebird from 'bluebird'
 
 export default function handler() {
   return Bluebird.try(() => {
-    const data = { data: 'Example feature message' }
+    const data = { data: 'feature data example' }
     return data
   })
 }

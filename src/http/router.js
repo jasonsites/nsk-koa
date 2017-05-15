@@ -6,7 +6,7 @@ export default function createRouter({ config, logger, middleware, routes }) {
   function configureMiddleware(app) {
     app.use(compress())
     app.use(bodyParser({
-      // extendTypes: { json: ['application/vnd.api+json'] },
+      extendTypes: { json: ['application/vnd.api+json'] },
     }))
     app.use(middleware.requestLogger({ logger, requestId: config.get('requestId') }))
     app.use(async (ctx, next) => {
@@ -19,7 +19,7 @@ export default function createRouter({ config, logger, middleware, routes }) {
 
   function registerRoutes(app) {
     routes.forEach((router) => {
-      app.use(router.routes)
+      app.use(router.routes())
       app.use(router.allowedMethods({
         notImplemented: () => notImplemented(),
         methodNotAllowed: () => methodNotAllowed(),

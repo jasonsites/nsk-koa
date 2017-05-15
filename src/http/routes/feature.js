@@ -13,8 +13,8 @@ export default function createRouter(feature) {
     }
   }
 
-  const router = new Router({ prefix: '' })
-  router.get('/feature', get)
+  const router = new Router({ prefix: '/feature' })
+  router.get('/', get)
 
   return router
 }

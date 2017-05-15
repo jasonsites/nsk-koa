@@ -7,8 +7,8 @@ export default function createRouter() {
     await next()
   }
 
-  const router = new Router({ prefix: '' })
-  router.get('/health', get)
+  const router = new Router({ prefix: '/health' })
+  router.get('/', get)
 
   return router
 }
