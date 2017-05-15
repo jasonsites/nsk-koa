@@ -3,12 +3,12 @@ import Router from 'koa-router'
 export default function createRouter() {
   async function get(ctx, next) {
     ctx.status = 200
-    ctx.body = { data: 'It works' }
+    ctx.body = { meta: { status: 'healthy' } }
     await next()
   }
 
   const router = new Router({ prefix: '' })
-  router.get('/', get)
+  router.get('/health', get)
 
   return router
 }

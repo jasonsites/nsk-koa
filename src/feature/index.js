@@ -6,3 +6,5 @@ export default function handler() {
     return data
   })
 }
+
+export const inject = { type: 'object' }

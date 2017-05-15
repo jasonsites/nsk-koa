@@ -12,3 +12,5 @@ export default async function errorHandler(ctx, next) {
     ctx.state.error = err
   }
 }
+
+export const inject = { type: 'object' }

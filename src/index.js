@@ -1,8 +1,5 @@
-import app from './http/app'
-import config from './http/config'
+import 'source-map-support/register'
 
-const env = process.env.NODE_ENV || 'dev'
-const { port } = config[env]
+import { start } from './app'
 
-console.log(`Application listening on port: ${port}`)
-app.listen(port)
+start()

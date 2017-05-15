@@ -1,6 +1,6 @@
-import Router from 'koa-better-router'
+import Router from 'koa-router'
 
-export default function routes(feature) {
+export default function createRouter(feature) {
   async function get(ctx, next) {
     try {
       const data = await feature()
@@ -13,12 +13,12 @@ export default function routes(feature) {
     }
   }
 
-  const router = Router({ prefix: '' }).loadMethods()
+  const router = new Router({ prefix: '' })
   router.get('/feature', get)
 
-  return router.middleware()
+  return router
 }
 
 export const inject = {
-  require: ['feature/index'],
+  require: 'feature/index',
 }
