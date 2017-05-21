@@ -1,22 +1,23 @@
-FROM node:6.10
+FROM node:latest
 
 RUN useradd --user-group --create-home --shell /bin/false app
 
-ENV HOME=/home/app
+ENV APP_DIR /home/app
 
-COPY ./test/server/package.json $HOME/src/
-RUN chown -R app:app $HOME/*
+RUN apt-get update
+RUN printf "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > $APP/.npmrc
+COPY package.json $APP_DIR
 
 USER app
-WORKDIR $HOME/src
-RUN npm install
+WORKDIR $APP_DIR
+RUN npm install --production
+RUN rm -f $APP_DIR/.npmrc
 
 USER root
-COPY ./test/server $HOME/src
-COPY ./dist $HOME/src/dist
-RUN chown -R app:app $HOME/*
+COPY ./dist $APP_DIR/dist
+RUN chown -R app:app $APP_DIR/*
 USER app
 
-EXPOSE 8080
+EXPOSE 9000
 
-CMD npm start
+CMD ["npm", "run", "serve"]
