@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/jasonsites/nsk-koa/compare/v0.0.2...v0.0.3) (2017-05-21)
+
+
+### Bug Fixes
+
+* adds basic feature test structure ([1908d10](https://github.com/jasonsites/nsk-koa/commit/1908d10))
+* corrects .gitignore to include relevant config ([3a5bcaf](https://github.com/jasonsites/nsk-koa/commit/3a5bcaf))
+* updates docker production and test configurations ([b629649](https://github.com/jasonsites/nsk-koa/commit/b629649))
+
+
+
 <a name="0.0.2"></a>
 ## 0.0.2 (2017-05-15)
 
