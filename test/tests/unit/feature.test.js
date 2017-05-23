@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import { describe, it } from 'mocha'
 
-import handler from '../../src/feature'
+import handler from '../../../src/feature'
 
 describe('[feature]', function () {
   it('should return correct data', function () {
