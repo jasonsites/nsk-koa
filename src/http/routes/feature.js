@@ -1,6 +1,6 @@
-import Router from 'koa-router'
+const Router = require('koa-router')
 
-export default function createRouter(feature) {
+module.exports = function createRouter(feature) {
   async function get(ctx, next) {
     try {
       const data = await feature()
@@ -19,6 +19,6 @@ export default function createRouter(feature) {
   return router
 }
 
-export const inject = {
+module.exports.inject = {
   require: 'feature/index',
 }

@@ -1,12 +1,12 @@
-import { createLogger } from 'bunyan'
+const { createLogger } = require('bunyan')
 
-import { name, version } from '../../package.json'
+const { name, version } = require('../../package.json')
 
-export default function logger(config) {
+module.exports = function logger(config) {
   const level = config.get(['log', 'level'])
   return createLogger({ name: `${name}/${version}`, level })
 }
 
-export const inject = {
+module.exports.inject = {
   require: 'config/index',
 }

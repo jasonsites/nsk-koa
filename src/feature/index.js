@@ -1,10 +1,10 @@
-import Bluebird from 'bluebird'
+const Bluebird = require('bluebird')
 
-export default function handler() {
+module.exports = function handler() {
   return Bluebird.try(() => {
     const data = { data: 'feature data example' }
     return data
   })
 }
 
-export const inject = { type: 'object' }
+module.exports.inject = { type: 'object' }

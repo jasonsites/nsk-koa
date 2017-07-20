@@ -1,6 +1,6 @@
-import Router from 'koa-router'
+const Router = require('koa-router')
 
-export default function createRouter() {
+module.exports = function createRouter() {
   async function get(ctx, next) {
     ctx.status = 200
     ctx.body = { data: 'base router is working....' }
@@ -13,4 +13,4 @@ export default function createRouter() {
   return router
 }
 
-export const inject = { }
+module.exports.inject = { }

@@ -1,12 +1,13 @@
-import Koa from 'koa'
+const Koa = require('koa')
 
-import container from './container'
+const container = require('./container')
 
 const app = new Koa()
 
-export async function start() {
+app.start = async function start() {
   try {
     const [config, logger, router] = await container.load('config/index', 'logger/index', 'http/router')
+    console.log(router)
     router.configureMiddleware(app)
     router.registerRoutes(app)
     const port = config.get('port')
@@ -18,4 +19,4 @@ export async function start() {
   }
 }
 
-export default app
+module.exports = app

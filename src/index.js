@@ -1,5 +1,3 @@
-import 'source-map-support/register'
-
-import { start } from './app'
+const { start } = require('./app')
 
 start()

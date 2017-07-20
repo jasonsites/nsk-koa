@@ -1,5 +1,5 @@
 
-export default function createAddRequestLogger({ logger, requestId }) {
+module.exports = function createAddRequestLogger({ logger, requestId }) {
   return function addRequestLogger(ctx, next) {
     const id = ctx.get(requestId || 'test-request-id')
     ctx.request.log = logger.child({ req_id: id })
@@ -7,4 +7,4 @@ export default function createAddRequestLogger({ logger, requestId }) {
   }
 }
 
-export const inject = { type: 'object' }
+module.exports.inject = { type: 'object' }
