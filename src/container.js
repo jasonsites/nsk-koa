@@ -1,4 +1,4 @@
-import Container from 'app-container'
+const Container = require('app-container')
 
 const container = new Container({
   namespace: 'inject',
@@ -6,5 +6,5 @@ const container = new Container({
 })
 
 container.glob('{config,feature,http,logger,validation}/**/*.js', { dir: __dirname })
-
-export default container
+console.log(container)
+module.exports = container

@@ -1,9 +1,9 @@
-import Baobab from 'baobab'
-import Bluebird from 'bluebird'
+const Baobab = require('baobab')
+const Bluebird = require('bluebird')
 
-import configSchema from './config.json'
+const configSchema = require('./config.json')
 
-export default function config(validation) {
+module.exports = function config(validation) {
   return Bluebird.try(() => {
     const validator = validation.createValidator({ schemas: { config: configSchema } })
     const validated = validator.throwOnInvalid({ id: 'config', val: {} })
@@ -31,6 +31,6 @@ export default function config(validation) {
   })
 }
 
-export const inject = {
+module.exports.inject = {
   require: 'validation/index',
 }

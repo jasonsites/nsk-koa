@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { wrap } from 'boom'
+const { wrap } = require('boom')
 
-export default async function errorHandler(ctx, next) {
+module.exports = async function errorHandler(ctx, next) {
   try {
     await next()
   } catch (err) {
@@ -13,4 +13,4 @@ export default async function errorHandler(ctx, next) {
   }
 }
 
-export const inject = { type: 'object' }
+module.exports.inject = { type: 'object' }

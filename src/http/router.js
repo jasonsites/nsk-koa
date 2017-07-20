@@ -1,8 +1,8 @@
-import { notImplemented, methodNotAllowed } from 'boom'
-import bodyParser from 'koa-bodyparser'
-import compress from 'koa-compress'
+const { notImplemented, methodNotAllowed } = require('boom')
+const bodyParser = require('koa-bodyparser')
+const compress = require('koa-compress')
 
-export default function createRouter({ config, logger, middleware, routes }) {
+module.exports = function createRouter({ config, logger, middleware, routes }) {
   function configureMiddleware(app) {
     app.use(compress())
     app.use(bodyParser({
@@ -30,7 +30,7 @@ export default function createRouter({ config, logger, middleware, routes }) {
   return { configureMiddleware, registerRoutes }
 }
 
-export const inject = {
+module.exports.inject = {
   require: {
     config: 'config/index',
     logger: 'logger/index',

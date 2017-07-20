@@ -1,7 +1,7 @@
-import { expect } from 'chai'
-import { describe, it } from 'mocha'
+const { expect } = require('chai')
+const { describe, it } = require('mocha')
 
-import handler from '../../../src/feature'
+const handler = require('../../../src/feature')
 
 describe('[feature]', function () {
   it('should return correct data', function () {

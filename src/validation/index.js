@@ -1,6 +1,6 @@
-import Ajv from 'ajv'
+const Ajv = require('ajv')
 
-export function createValidator({ schemas }) {
+module.exports.createValidator = function createValidator({ schemas }) {
   const ajv = new Ajv({
     useDefaults: true,
     coerceTypes: 'array',
@@ -23,4 +23,4 @@ export function createValidator({ schemas }) {
   return ajv
 }
 
-export const inject = { }
+module.exports.inject = { }
