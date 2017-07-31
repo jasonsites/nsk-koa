@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.4"></a>
+## [0.0.4](https://github.com/jasonsites/nsk-koa/compare/v0.0.3...v0.0.4) (2017-07-31)
+
+
+### Bug Fixes
+
+* **lint:** add .eslintrc.json rules for tests ([8e0cd4c](https://github.com/jasonsites/nsk-koa/commit/8e0cd4c))
+* adds .nvmrc ([428824e](https://github.com/jasonsites/nsk-koa/commit/428824e))
+* cleanup ([8fd8b18](https://github.com/jasonsites/nsk-koa/commit/8fd8b18))
+* package cleanup ([ba12909](https://github.com/jasonsites/nsk-koa/commit/ba12909))
+* removes .babelrc ([5925703](https://github.com/jasonsites/nsk-koa/commit/5925703))
+* removes transpilation ([88649db](https://github.com/jasonsites/nsk-koa/commit/88649db))
+* updates docker and test configuration ([833ce32](https://github.com/jasonsites/nsk-koa/commit/833ce32))
+
+
+
 <a name="0.0.3"></a>
 ## [0.0.3](https://github.com/jasonsites/nsk-koa/compare/v0.0.2...v0.0.3) (2017-05-21)
 

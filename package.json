@@ -1,6 +1,6 @@
 {
   "name": "nsk-koa",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node Starter Kit (Koa)",
   "main": "src/index.js",
   "scripts": {
