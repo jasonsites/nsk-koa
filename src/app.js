@@ -7,7 +7,6 @@ const app = new Koa()
 app.start = async function start() {
   try {
     const [config, logger, router] = await container.load('config/index', 'logger/index', 'http/router')
-    console.log(router)
     router.configureMiddleware(app)
     router.registerRoutes(app)
     const port = config.get('port')

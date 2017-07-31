@@ -6,5 +6,5 @@ const container = new Container({
 })
 
 container.glob('{config,feature,http,logger,validation}/**/*.js', { dir: __dirname })
-console.log(container)
+
 module.exports = container
