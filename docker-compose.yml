@@ -3,7 +3,7 @@ services:
   nsk-koa:
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: ./test/Dockerfile
       args:
         NPM_TOKEN: $NPM_TOKEN
     command: npm run coverage

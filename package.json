@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "npm prune",
     "build": "rm -rf dist/* && src -d dist --copy-files",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --recursive test/**/*.test.js test/**/**/*.test.js",
+    "coverage": "istanbul cover node_modules/.bin/_mocha --recursive test/**/*.test.js test/**/**/*.test.js",
     "debug": "node --inspect --debug-brk dist/index.js",
     "postversion": "npm run build",
     "release": "npm run build && standard-version",
@@ -50,6 +50,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-watch": "^3.0.1",
     "faker": "^4.1.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.4.1",
     "nock": "^9.0.13",
     "nodemon": "^1.11.0",
