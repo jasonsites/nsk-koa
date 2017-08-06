@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-const { wrap } = require('boom')
+const { boomify } = require('boom')
 
 module.exports = async function errorHandler(ctx, next) {
   try {
@@ -7,8 +6,17 @@ module.exports = async function errorHandler(ctx, next) {
   } catch (err) {
     if (ctx.request.log) ctx.request.log.error(err)
     else console.error(err)
-    if (!err.isBoom) wrap(err, 500)
-    ctx.status = err.output.payload.statusCode
+    if (!err.isBoom) boomify(err, { statusCode: 500 })
+    const { payload } = err.output
+    ctx.body = {
+      errors: [{
+        title: payload.error,
+        detail: payload.message,
+        status: payload.statusCode.toString(),
+        meta: err.data,
+      }],
+    }
+    ctx.status = payload.statusCode
     ctx.state.error = err
   }
 }

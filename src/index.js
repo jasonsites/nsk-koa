@@ -1,3 +1,3 @@
-const { start } = require('./app')
+const container = require('./container')
 
-start()
+container.load('http/app')

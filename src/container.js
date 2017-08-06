@@ -5,6 +5,6 @@ const container = new Container({
   defaults: { singleton: true },
 })
 
-container.glob('{config,feature,http,logger,validation}/**/*.js', { dir: __dirname })
+container.glob('**/*.js', { dir: __dirname, ignore: ['index.js'] })
 
 module.exports = container

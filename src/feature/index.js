@@ -1,10 +1,7 @@
 const Bluebird = require('bluebird')
 
-module.exports = function handler() {
-  return Bluebird.try(() => {
-    const data = { data: 'feature data example' }
-    return data
-  })
+module.exports = function handler(data) {
+  return Bluebird.try(() => data)
 }
 
 module.exports.inject = { type: 'object' }

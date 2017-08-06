@@ -2,13 +2,13 @@ const { notImplemented, methodNotAllowed } = require('boom')
 const bodyParser = require('koa-bodyparser')
 const compress = require('koa-compress')
 
-module.exports = function createRouter({ config, logger, middleware, routes }) {
+module.exports = function createRouter({ logger, middleware, routes }) {
   function configureMiddleware(app) {
     app.use(compress())
     app.use(bodyParser({
       extendTypes: { json: ['application/vnd.api+json'] },
     }))
-    app.use(middleware.requestLogger({ logger, requestId: config.get('requestId') }))
+    // app.use(middleware.requestLogger({ logger, requestId: config.get('requestId') }))
     app.use(async (ctx, next) => {
       const { request: { ip, path } } = ctx
       logger.info(`Request from ${ip} for ${path}`)
@@ -32,8 +32,7 @@ module.exports = function createRouter({ config, logger, middleware, routes }) {
 
 module.exports.inject = {
   require: {
-    config: 'config/index',
-    logger: 'logger/index',
+    logger: 'logger',
     middleware: {
       errorHandler: 'http/middleware/error-handler',
       requestLogger: 'http/middleware/request-logger',

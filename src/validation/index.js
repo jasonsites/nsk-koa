@@ -23,4 +23,6 @@ module.exports.createValidator = function createValidator({ schemas }) {
   return ajv
 }
 
-module.exports.inject = { }
+module.exports.inject = {
+  name: 'validation',
+}
