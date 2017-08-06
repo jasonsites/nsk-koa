@@ -5,14 +5,14 @@
   "main": "src/index.js",
   "scripts": {
     "preinstall": "npm prune",
-    "build": "rm -rf dist/* && cp -a src/* dist/",
+    "build": "rm -rf dist && mkdir dist && cp -a src/* dist/",
     "coverage": "istanbul cover node_modules/.bin/_mocha --recursive test/**/*.test.js",
     "debug": "node --inspect --debug-brk dist/index.js",
     "release": "npm run build && standard-version",
     "serve": "node dist/index.js",
-    "start": "node src/index.js",
+    "start": "NODE_CONFIG_DIR=./test/config  nodemon src/index.js",
     "sec": "nsp check --output summary",
-    "test": "mocha --recursive test/tests/**/*.test.js"
+    "test": "mocha --recursive test/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "bluebird": "^3.5.0",
     "boom": "^5.2.0",
     "bunyan": "^1.8.10",
+    "config": "^1.26.1",
     "graphql": "^0.10.5",
     "joi": "^10.6.0",
     "jsonwebtoken": "^7.4.1",
@@ -49,7 +50,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-watch": "^3.1.2",
     "faker": "^4.1.0",
-    "istanbul": "^0.4.5",
+    "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.5.0",
     "nock": "^9.0.14",
     "nodemon": "^1.11.0",

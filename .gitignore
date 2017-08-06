@@ -1,8 +1,8 @@
 config/**/*
-!config/config.json
-!config/index.js
+!config/config.ctmpl
 !test/config
 !test/config/*
+
 dist
 
 # Logs

@@ -8,7 +8,11 @@ services:
         NPM_TOKEN: $NPM_TOKEN
     command: npm run coverage
     environment:
+      NODE_CONFIG_DIR: /opt/app/test/config
+      DEBUG: app-container*
       NODE_ENV: test
+    ports:
+      - "9004:9004"
     volumes:
       - ./coverage:/opt/app/coverage
       - ./src:/opt/app/src
