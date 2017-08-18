@@ -1,8 +1,8 @@
-FROM node:latest
+FROM node:8
 
-ARG NPM_TOKEN
+# ARG NPM_TOKEN
 
-ENV APP /opt/app
+ENV APP /home/app
 WORKDIR $APP
 
 # RUN printf "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > $APP/.npmrc
