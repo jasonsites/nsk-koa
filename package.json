@@ -1,16 +1,14 @@
 {
   "name": "nsk-koa",
   "version": "0.0.5",
-  "description": "Node Starter Kit (Koa)",
+  "description": "Node Starter Kit",
   "main": "src/index.js",
   "scripts": {
     "preinstall": "npm prune",
-    "build": "rm -rf dist && mkdir dist && cp -a src/* dist/",
     "coverage": "istanbul cover node_modules/.bin/_mocha --recursive test/**/*.test.js",
-    "debug": "node --inspect --debug-brk dist/index.js",
-    "release": "npm run build && standard-version",
-    "serve": "node dist/index.js",
-    "start": "NODE_CONFIG_DIR=./test/config  nodemon src/index.js",
+    "dev": "NODE_CONFIG_DIR=./test/config nodemon src/index.js",
+    "lint": "eslint ./src",
+    "release": "standard-version",
     "sec": "nsp check --output summary",
     "test": "mocha --recursive test/**/*.test.js"
   },
@@ -26,39 +24,32 @@
   },
   "homepage": "https://github.com/jasonsites/nsk-koa#readme",
   "dependencies": {
-    "ajv": "^5.2.2",
     "app-container": "^0.4.7",
-    "baobab": "^2.4.3",
     "bluebird": "^3.5.0",
     "boom": "^5.2.0",
     "bunyan": "^1.8.10",
     "config": "^1.26.1",
-    "graphql": "^0.10.5",
     "joi": "^10.6.0",
-    "jsonwebtoken": "^7.4.1",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-compress": "^2.0.0",
     "koa-router": "^7.2.1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "transformalizer": "^1.0.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^4.1.0",
-    "chalk": "^2.0.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-watch": "^3.1.2",
     "faker": "^4.1.0",
     "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.5.0",
-    "nock": "^9.0.14",
     "nodemon": "^1.11.0",
-    "npm-run-all": "^4.0.2",
     "nsp": "^2.7.0",
     "sinon": "^2.4.1",
     "standard-version": "^4.2.0",
-    "superagent": "^3.5.2",
     "supertest": "^3.0.0"
   }
 }

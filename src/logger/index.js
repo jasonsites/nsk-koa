@@ -4,8 +4,10 @@ const config = require('config')
 const { name, version } = require('../../package.json')
 
 module.exports = function logger() {
-  const level = config.get('log.level')
-  return createLogger({ name: `${name}/${version}`, level })
+  return createLogger({
+    level: config.get('log.level'),
+    name: `${name}/${version}`,
+  })
 }
 
 module.exports.inject = {

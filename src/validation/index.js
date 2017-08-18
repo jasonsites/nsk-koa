@@ -1,26 +1,40 @@
-const Ajv = require('ajv')
+const { badRequest } = require('boom')
+const joi = require('joi')
 
-module.exports.createValidator = function createValidator({ schemas }) {
-  const ajv = new Ajv({
-    useDefaults: true,
-    coerceTypes: 'array',
-    schemas,
+module.exports = function createValidator() {
+  // jsonapi POST/PATCH request schema
+  const schema = joi.object({
+    jsonapi: joi.object({
+      version: joi.string(),
+    }).required(),
+    meta: joi.object({
+      // no restrictions on field names
+    }).unknown(true),
+    data: joi.object({
+      type: joi.string().valid('feature').required(),
+      id: joi.string().required(),
+      attributes: joi.object({
+        feature: joi.object({
+          // no restrictions on field names
+          // values must be scalar
+        }).required()
+          .pattern(/.*/g, joi.any().invalid([joi.array(), joi.object()])),
+      }).required(),
+    }).required(),
   })
-  /**
-   * Add convenience method for validation that throws on invalid
-   * @param  {String} id - schema id
-   * @param  {*} val - value to validate
-   */
-  ajv.throwOnInvalid = function throwOnInvalid({ id, val }) {
-    const valid = ajv.validate(id, val)
-    if (!valid) {
-      const err = new Error(`Validation Error (${id})`)
-      err.errors = ajv.errors.slice()
-      throw err
+
+  function validate(body) {
+    try {
+      return joi.attempt(body, schema)
+    } catch (err) {
+      const msg = Array.isArray(err.details)
+        ? err.details.map(detail => detail.message).join(', ')
+        : ''
+      throw badRequest(`Invalid request body: ${msg}`)
     }
-    return val
   }
-  return ajv
+
+  return { validate }
 }
 
 module.exports.inject = {

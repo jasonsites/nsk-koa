@@ -8,12 +8,7 @@ module.exports = function createRouter({ logger, middleware, routes }) {
     app.use(bodyParser({
       extendTypes: { json: ['application/vnd.api+json'] },
     }))
-    // app.use(middleware.requestLogger({ logger, requestId: config.get('requestId') }))
-    app.use(async (ctx, next) => {
-      const { request: { ip, path } } = ctx
-      logger.info(`Request from ${ip} for ${path}`)
-      await next()
-    })
+    app.use(middleware.requestLogger({ logger }))
     app.use(middleware.errorHandler)
   }
 

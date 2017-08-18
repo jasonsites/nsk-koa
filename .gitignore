@@ -1,8 +1,3 @@
-config/**/*
-!config/config.ctmpl
-!test/config
-!test/config/*
-
 dist
 
 # Logs

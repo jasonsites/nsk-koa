@@ -1,10 +1,13 @@
 const Router = require('koa-router')
 
 module.exports = function createRouter({ controller }) {
-  const { detail } = controller
+  const { create, destroy, detail, update } = controller
 
   const router = new Router({ prefix: '/feature' })
-  router.get('/', detail)
+  router.get('/:id', detail)
+  router.post('/', create)
+  router.patch('/:id', update)
+  router.delete('/:id', destroy)
 
   return router
 }
