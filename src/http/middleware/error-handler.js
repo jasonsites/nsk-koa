@@ -4,7 +4,8 @@ module.exports = async function errorHandler(ctx, next) {
   try {
     await next()
   } catch (err) {
-    if (ctx.request.log) ctx.request.log.error(err)
+    const { log } = ctx.request
+    if (log) log.error(err)
     else console.error(err)
     if (!err.isBoom) boomify(err, { statusCode: 500 })
     const { payload } = err.output

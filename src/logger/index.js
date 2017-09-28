@@ -6,7 +6,8 @@ const { name, version } = require('../../package.json')
 module.exports = function logger() {
   return createLogger({
     level: config.get('log.level'),
-    name: `${name}/${version}`,
+    name: `${name}`,
+    version: `${version}`,
   })
 }
 
