@@ -1,22 +1,20 @@
 const config = require('config')
 const uuid = require('uuid')
 
-module.exports = function createAddRequestLogger({ logger }) {
-  function serializeRequest(req) {
-    const { body, headers, method, url } = req
-    if (config.get('debug.request')) {
-      return { body, headers, method, url }
-    }
-    return { headers, method, url }
+module.exports = function addRequestLogger({ logger }) {
+  return function requestLogger(ctx, next) {
+    const { request: { debug, level } } = config.get('logger')
+    const { ip, request } = ctx
+    const requestId = ctx.get('X-REQUEST-ID') || uuid.v4()
+    request.log = logger.child({ ip, level, req_id: requestId })
+    request.log.info(serializeRequest({ debug, request }))
+    return next()
   }
 
-  return async function addRequestLogger(ctx, next) {
-    const { ip } = ctx
-    const requestId = ctx.get('X-REQUEST-ID') || uuid.v4()
-    const log = logger.child({ ip, req_id: requestId })
-    ctx.request.log = log
-    log.info(serializeRequest(ctx.request))
-    return next()
+  function serializeRequest({ debug = false, request }) {
+    const { body, headers, method, url } = request
+    if (debug) return { body, headers, method, url }
+    return { headers, method, url }
   }
 }
 

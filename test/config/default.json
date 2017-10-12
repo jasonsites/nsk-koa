@@ -3,10 +3,13 @@
     "baseUrl": "https://api.example.com",
     "port": 9000
   },
-  "debug": {
-    "request": true
-  },
-  "log": {
-    "level": "info"
+  "logger": {
+    "parent": {
+      "level": "info"
+    },
+    "request": {
+      "debug": true,
+      "level": "info"
+    }
   }
 }
