@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/jasonsites/nsk-koa/compare/v0.1.0...v0.1.1) (2017-10-12)
+
+
+### Bug Fixes
+
+* **logging:** adds configurable request logging ([27821f5](https://github.com/jasonsites/nsk-koa/commit/27821f5))
+* replaces sinon with testdouble and adds test bootstrap ([1670273](https://github.com/jasonsites/nsk-koa/commit/1670273))
+* updates configurable request logging ([41db430](https://github.com/jasonsites/nsk-koa/commit/41db430))
+* updates dependencies ([7a5b0dd](https://github.com/jasonsites/nsk-koa/commit/7a5b0dd))
+* updates jsonapi serialization ([c7344f0](https://github.com/jasonsites/nsk-koa/commit/c7344f0))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/jasonsites/nsk-koa/compare/v0.0.5...v0.1.0) (2017-08-18)
 
