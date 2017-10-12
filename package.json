@@ -5,12 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "preinstall": "npm prune",
-    "coverage": "istanbul cover node_modules/.bin/_mocha --recursive test/**/*.test.js",
+    "coverage": "istanbul cover node_modules/.bin/_mocha --exit --recursive test/**/*.test.js",
     "dev": "NODE_CONFIG_DIR=./test/config nodemon src/index.js",
     "lint": "eslint ./src",
     "release": "standard-version",
     "sec": "nsp check --output summary",
-    "test": "mocha --recursive test/**/*.test.js"
+    "test": "mocha --exit --recursive test/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -24,32 +24,32 @@
   },
   "homepage": "https://github.com/jasonsites/nsk-koa#readme",
   "dependencies": {
-    "app-container": "^0.4.7",
-    "bluebird": "^3.5.0",
-    "boom": "^5.2.0",
-    "bunyan": "^1.8.10",
-    "config": "^1.26.1",
-    "joi": "^10.6.0",
+    "app-container": "^0.4.8",
+    "bluebird": "^3.5.1",
+    "boom": "^6.0.0",
+    "bunyan": "^1.8.12",
+    "config": "^1.26.2",
+    "joi": "^11.3.4",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-compress": "^2.0.0",
     "koa-router": "^7.2.1",
     "lodash": "^4.17.4",
-    "transformalizer": "^1.0.0",
+    "transformalizer": "^1.1.1",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "chai": "^4.1.0",
-    "eslint": "^4.3.0",
-    "eslint-config-airbnb-base": "^11.3.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb-base": "^12.0.2",
     "eslint-plugin-import": "^2.7.0",
     "faker": "^4.1.0",
-    "istanbul": "^1.0.0-alpha.2",
+    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.5.0",
-    "nodemon": "^1.11.0",
-    "nsp": "^2.7.0",
-    "sinon": "^2.4.1",
+    "nodemon": "^1.12.1",
+    "nsp": "^2.8.1",
     "standard-version": "^4.2.0",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "testdouble": "^3.2.6"
   }
 }
