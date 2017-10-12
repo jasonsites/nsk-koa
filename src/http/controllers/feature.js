@@ -1,75 +1,70 @@
+const { conflict } = require('boom')
 const { get } = require('lodash')
 
-module.exports = function featureController({ feature, jsonapi, validation }) {
-  async function create(ctx, next) {
+module.exports = function featureController({ jsonapi, feature, validation }) {
+  async function create(ctx) {
     try {
-      const { body } = ctx.request
-      validation.validate(body)
+      const { body, method } = ctx.request
+      validation.validate({ body, method })
       const data = extractData({ body })
       const doc = await feature.create({ data })
       ctx.body = jsonapi.serialize({
-        type: 'feature',
+        type: 'entity',
         source: doc.attrs,
         options: {},
       })
       ctx.status = 201
       ctx.type = 'application/vnd.api+json'
-      await next()
     } catch (err) {
-      ctx.status = 500
+      if (err.name === 'ConditionalCheckFailedException') {
+        const id = get(ctx.request, 'body.data.id', 'UNKNOWN')
+        throw conflict(`Resource with id ${id} already exists`)
+      }
       throw err
     }
   }
 
-  async function destroy(ctx, next) {
-    try {
-      const { id } = ctx.params
-      await feature.destroy({ id })
-      ctx.status = 204
-      await next()
-    } catch (err) {
-      ctx.status = 500
-      throw err
-    }
+  async function destroy(ctx) {
+    const { id } = ctx.params
+    await feature.destroy({ id })
+    ctx.status = 204
   }
 
-  async function detail(ctx, next) {
-    try {
-      const { id } = ctx.params
-      const doc = await feature.detail({ id })
-      ctx.body = jsonapi.serialize({
-        type: 'feature',
-        source: doc.attrs,
-        options: {},
-      })
-      ctx.status = 200
-      ctx.type = 'application/vnd.api+json'
-      await next()
-    } catch (err) {
-      ctx.status = 500
-      throw err
-    }
+  async function detail(ctx) {
+    const { id } = ctx.params
+    const doc = await feature.detail({ id })
+    ctx.body = jsonapi.serialize({
+      type: 'entity',
+      source: doc.attrs,
+      options: {},
+    })
+    ctx.status = 200
+    ctx.type = 'application/vnd.api+json'
   }
 
+  /**
+   * Compose data to be sent to the app layer/repo
+   * @param  {Object} options.body - (parsed) jsonapi request body
+   * @param  {String} options.id   - optional id from path (params)
+   * @return {Object}
+   */
   function extractData({ body, id }) {
-    const prefs = get(body, 'data.attributes.feature')
-    return Object.assign({}, { id: id || get(body, 'data.id') }, prefs)
+    const feat = get(body, 'data.attributes.feature')
+    return Object.assign({}, { id: id || get(body, 'data.id') }, feat)
   }
 
-  async function update(ctx, next) {
-    try {
-      const { id } = ctx.params
-      const { body } = ctx.request
-      validation.validate(body)
-      // TODO: validate that params id matches body id
-      const data = extractData({ body, id })
-      await feature.update({ data })
-      ctx.status = 204
-      await next()
-    } catch (err) {
-      ctx.status = 500
-      throw err
-    }
+  /**
+   * NOTE: the id for PATCH requests exists in both the path (params) and
+   * the request body (jsonapi resource). The shape of the body is validated,
+   * but the path id is the only one used for updating the resource
+   */
+  async function update(ctx) {
+    const { id } = ctx.params
+    const { body, method } = ctx.request
+    validation.validate({ body, method })
+    const data = extractData({ body, id })
+    await feature.update({ data })
+    ctx.status = 204
   }
 
   return { create, destroy, detail, update }

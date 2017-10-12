@@ -1,9 +1,17 @@
 const { badRequest } = require('boom')
 const joi = require('joi')
 
-module.exports = function createValidator() {
-  // jsonapi POST/PATCH request schema
-  const schema = joi.object({
+/**
+ * Create joi validation schema for POST/PATCH request bodies
+ * @param  {String} method - http request method
+ * @return {Object}
+ */
+function generateSchema(method) {
+  const dataTypes = [joi.boolean(), joi.number()]
+  if (method === 'PATCH') dataTypes.push(joi.string().allow(null))
+  else dataTypes.push(joi.string())
+
+  return joi.object({
     jsonapi: joi.object({
       version: joi.string(),
     }).required(),
@@ -11,20 +19,22 @@ module.exports = function createValidator() {
       // no restrictions on field names
     }).unknown(true),
     data: joi.object({
-      type: joi.string().valid('feature').required(),
+      type: joi.string().valid('entity').required(),
       id: joi.string().required(),
       attributes: joi.object({
         feature: joi.object({
           // no restrictions on field names
-          // values must be scalar
         }).required()
-          .pattern(/.*/g, joi.any().invalid([joi.array(), joi.object()])),
+          .pattern(/.*/g, joi.alternatives(dataTypes)),
       }).required(),
     }).required(),
   })
+}
 
-  function validate(body) {
+module.exports = function createValidator() {
+  function validate({ body, method }) {
     try {
+      const schema = generateSchema(method)
       return joi.attempt(body, schema)
     } catch (err) {
       const msg = Array.isArray(err.details)
