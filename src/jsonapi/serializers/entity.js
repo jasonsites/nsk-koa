@@ -9,6 +9,6 @@ const schema = {
   },
 }
 
-const serializer = createSerializer({ name: 'feature', schema })
+const serializer = createSerializer({ name: 'entity', schema })
 
 module.exports = { serializer }

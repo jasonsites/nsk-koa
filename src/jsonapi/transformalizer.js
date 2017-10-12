@@ -6,9 +6,8 @@ const transformalizer = createTransformalizer()
 
 /**
  * Factory function that returns an attribute building function
- * that omits a set of paths off the source object and attaches them
- * to a "feature" attribute
- * @param  {String[]} paths - source data fields
+ * that picks a set of paths off the source object
+ * @param  {String[]} paths - attributes
  * @return {Function}
  */
 transformalizer.buildAttributes = function buildAttributes(paths) {

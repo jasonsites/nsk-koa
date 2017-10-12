@@ -1,3 +1,3 @@
-const { serializer: feature } = require('./feature')
+const { serializer: entity } = require('./entity')
 
-module.exports = { feature }
+module.exports = { entity }

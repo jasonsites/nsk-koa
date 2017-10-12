@@ -3,7 +3,7 @@ const serializers = require('./serializers')
 module.exports = { serialize }
 
 /**
- * Serialize one or more resources into a valid JSON API document
+ * Serialize one or more resources into a valid jsonapi document
  * @param  {String} params.type    - serializer type
  * @param  {Object} params.source  - source document
  * @param  {Object} params.options - options
