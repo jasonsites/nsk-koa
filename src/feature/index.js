@@ -1,25 +1,19 @@
-const Bluebird = require('bluebird')
 
-module.exports = function feature() {
+module.exports = function feature(repo) {
   async function create({ data }) {
-    // replace with business logic
-    return Bluebird.try(() => ({ attrs: data }))
+    return repo.create({ data })
   }
 
   async function destroy({ id }) {
-    // replace with business logic
-    return Bluebird.try(() => ({ id }))
+    return repo.destroy({ id })
   }
 
   async function detail({ id }) {
-    // replace with business logic
-    const data = { id, key1: 'val1', key2: 'val2' }
-    return Bluebird.try(() => ({ attrs: data }))
+    return repo.get({ id })
   }
 
   async function update({ data }) {
-    // replace with business logic
-    return Bluebird.try(() => ({ attrs: data }))
+    return repo.update({ data })
   }
 
   return { create, destroy, detail, update }
@@ -27,4 +21,5 @@ module.exports = function feature() {
 
 module.exports.inject = {
   name: 'feature',
+  require: ['repo'],
 }

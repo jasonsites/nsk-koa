@@ -7,7 +7,7 @@ const { agent } = require('supertest')
 
 const { loadModules } = require('../../../utils')
 
-const td = global.td
+const { td } = global
 
 function generateRequest() {
   const entityId = faker.random.uuid()
