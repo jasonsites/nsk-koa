@@ -1,11 +1,7 @@
 const Bluebird = require('bluebird')
 const { before } = require('mocha')
-const td = require('testdouble')
 
 const container = require('../../../src/container')
-
-td.config({ promiseConstructor: Bluebird })
-global.td = td
 
 before('initialize containers', async function () {
   this.timeout(30000)

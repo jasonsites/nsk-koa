@@ -3,11 +3,10 @@ const config = require('config')
 const faker = require('faker')
 const { createServer } = require('http')
 const { afterEach, before, describe, it } = require('mocha')
+const sinon = require('sinon')
 const { agent } = require('supertest')
 
 const { loadModules } = require('../../../utils')
-
-const { td } = global
 
 function generateRequest() {
   const entityId = faker.random.uuid()
@@ -31,6 +30,7 @@ describe('[integration] POST /feature', function () {
   this.timeout(30000)
 
   before('load modules', function () {
+    this.sandbox = sinon.sandbox.create()
     return loadModules.call(this, {
       app: 'http/app',
     })
@@ -40,7 +40,7 @@ describe('[integration] POST /feature', function () {
   })
 
   afterEach(function () {
-    td.reset()
+    this.sandbox.restore()
   })
 
   describe('failure states', function () {

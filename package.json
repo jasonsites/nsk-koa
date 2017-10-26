@@ -1,16 +1,16 @@
 {
   "name": "nsk-koa",
   "version": "0.1.1",
-  "description": "Node Starter Kit",
+  "description": "Node Starter Kit for Koa API Applications",
   "main": "src/index.js",
   "scripts": {
     "preinstall": "npm prune",
-    "coverage": "istanbul cover node_modules/.bin/_mocha --exit --recursive test/**/*.test.js",
+    "coverage": "istanbul cover node_modules/.bin/_mocha --recursive test/**/*.test.js",
     "dev": "NODE_CONFIG_DIR=./test/config nodemon src/index.js",
     "lint": "eslint ./src",
     "release": "standard-version",
     "sec": "nsp check --output summary",
-    "test": "mocha --exit --recursive test/**/*.test.js"
+    "test": "mocha --recursive test/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -48,8 +48,8 @@
     "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
     "nsp": "^2.8.1",
+    "sinon": "^4.0.2",
     "standard-version": "^4.2.0",
-    "supertest": "^3.0.0",
-    "testdouble": "^3.2.6"
+    "supertest": "^3.0.0"
   }
 }
