@@ -48,7 +48,7 @@
     "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
     "nsp": "^2.8.1",
-    "sinon": "^4.0.2",
+    "sinon": "^4.1.2",
     "standard-version": "^4.2.0",
     "supertest": "^3.0.0"
   }
