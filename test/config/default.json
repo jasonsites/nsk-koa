@@ -4,10 +4,13 @@
     "port": 9000
   },
   "logger": {
-    "parent": {
+    "app": {
+      "active": true,
+      "debug": false,
       "level": "info"
     },
     "request": {
+      "active": false,
       "debug": true,
       "level": "info"
     }

@@ -1,10 +1,9 @@
 const Router = require('koa-router')
 
 module.exports = function createRouter() {
-  async function get(ctx, next) {
+  async function get(ctx) {
     ctx.status = 200
     ctx.body = { meta: { status: 'healthy' } }
-    await next()
   }
 
   const router = new Router({ prefix: '/health' })
