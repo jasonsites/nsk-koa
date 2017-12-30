@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/jasonsites/nsk-koa/compare/v0.1.1...v0.2.0) (2017-12-30)
+
+
+### Bug Fixes
+
+* revert to sinon for stubs ([18507f5](https://github.com/jasonsites/nsk-koa/commit/18507f5))
+* updates mocha and eslint configuration ([4954f97](https://github.com/jasonsites/nsk-koa/commit/4954f97))
+* **logger:** adds additional logging control to the app and request loggers ([4568769](https://github.com/jasonsites/nsk-koa/commit/4568769))
+
+
+### Features
+
+* adds example repository ([709e2d3](https://github.com/jasonsites/nsk-koa/commit/709e2d3))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/jasonsites/nsk-koa/compare/v0.1.0...v0.1.1) (2017-10-12)
 
