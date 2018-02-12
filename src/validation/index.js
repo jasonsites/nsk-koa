@@ -1,6 +1,21 @@
 const { badRequest } = require('boom')
 const joi = require('joi')
 
+module.exports = function createValidator() {
+  function validate({ body, method }) {
+    try {
+      const schema = generateSchema(method)
+      return joi.attempt(body, schema)
+    } catch (err) {
+      const msg = Array.isArray(err.details)
+        ? err.details.map(detail => detail.message).join(', ')
+        : ''
+      throw badRequest(`Invalid request body: ${msg}`)
+    }
+  }
+  return { validate }
+}
+
 /**
  * Create joi validation schema for POST/PATCH request bodies
  * @param  {String} method - http request method
@@ -29,22 +44,6 @@ function generateSchema(method) {
       }).required(),
     }).required(),
   })
-}
-
-module.exports = function createValidator() {
-  function validate({ body, method }) {
-    try {
-      const schema = generateSchema(method)
-      return joi.attempt(body, schema)
-    } catch (err) {
-      const msg = Array.isArray(err.details)
-        ? err.details.map(detail => detail.message).join(', ')
-        : ''
-      throw badRequest(`Invalid request body: ${msg}`)
-    }
-  }
-
-  return { validate }
 }
 
 module.exports.inject = {

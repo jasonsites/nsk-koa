@@ -12,4 +12,4 @@ module.exports = function createRouter() {
   return router
 }
 
-module.exports.inject = { }
+module.exports.inject = {}

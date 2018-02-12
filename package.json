@@ -39,7 +39,7 @@
     "temp-directory": "./coverage/.nyc_output"
   },
   "dependencies": {
-    "app-container": "^1.0.0",
+    "app-container": "^0.4.8",
     "bluebird": "^3.5.1",
     "boom": "^7.1.1",
     "bunyan": "^1.8.12",
