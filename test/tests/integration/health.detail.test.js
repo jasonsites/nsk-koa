@@ -4,18 +4,14 @@ const { createServer } = require('http')
 const { before, describe, it } = require('mocha')
 const { agent } = require('supertest')
 
-const { loadModules } = require('../../../utils')
+const { bootstrap, loadModules } = require('../../utils')
 
 describe('[integration] GET /feature/{id}', function () {
-  this.timeout(30000)
-
-  before('load modules', function () {
-    return loadModules.call(this, {
-      app: 'http/app',
-    })
-      .then(() => {
-        this.request = agent(createServer(this.app.callback()))
-      })
+  before('load modules', async function () {
+    this.timeout(30000)
+    await bootstrap()
+    await loadModules.call(this, { app: 'http/app' })
+    this.request = agent(createServer(this.app.callback()))
   })
 
   describe('success states', function () {

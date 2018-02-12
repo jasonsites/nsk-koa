@@ -6,7 +6,7 @@ const { afterEach, before, describe, it } = require('mocha')
 const sinon = require('sinon')
 const { agent } = require('supertest')
 
-const { loadModules } = require('../../../utils')
+const { bootstrap, loadModules } = require('../../utils')
 
 function generateRequest() {
   const entityId = faker.random.uuid()
@@ -27,16 +27,12 @@ function generateRequest() {
 }
 
 describe('[integration] POST /feature', function () {
-  this.timeout(30000)
-
-  before('load modules', function () {
+  before('load modules', async function () {
     this.sandbox = sinon.sandbox.create()
-    return loadModules.call(this, {
-      app: 'http/app',
-    })
-      .then(() => {
-        this.request = agent(createServer(this.app.callback()))
-      })
+    this.timeout(30000)
+    await bootstrap()
+    await loadModules.call(this, { app: 'http/app' })
+    this.request = agent(createServer(this.app.callback()))
   })
 
   afterEach(function () {
