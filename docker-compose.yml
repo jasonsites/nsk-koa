@@ -1,18 +1,18 @@
-version: '2'
+version: '3'
+
 services:
+
   nsk-koa:
     build:
       context: .
       dockerfile: ./test/Dockerfile
-      args:
-        NPM_TOKEN: $NPM_TOKEN
     command: npm run coverage
     environment:
-      NODE_CONFIG_DIR: /home/app/test/config
       DEBUG: app-container*
+      NODE_CONFIG_DIR: /home/app/test/config
       NODE_ENV: test
     ports:
-      - "9000:9000"
+      - 9000:9000
     volumes:
       - ./coverage:/home/app/coverage
       - ./src:/home/app/src

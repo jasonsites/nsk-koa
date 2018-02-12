@@ -1,10 +1,8 @@
 {
   "root": true,
   "env": {
-    "commonjs": true,
     "mocha"   : true,
-    "node"    : true,
-    "worker"  : true
+    "node"    : true
   },
   "extends": [
     "airbnb-base",

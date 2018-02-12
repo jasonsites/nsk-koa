@@ -5,51 +5,67 @@
   "main": "src/index.js",
   "scripts": {
     "preinstall": "npm prune",
-    "coverage": "istanbul cover node_modules/.bin/_mocha --recursive test/**/*.test.js",
+    "coverage": "nyc npm t",
     "dev": "NODE_CONFIG_DIR=./test/config nodemon src/index.js",
-    "lint": "eslint ./src",
+    "lint": "eslint src test",
     "release": "standard-version",
     "sec": "nsp check --output summary",
-    "test": "mocha --recursive test/**/*.test.js"
+    "test": "mocha --recursive --exit test/tests/**/*.test.js"
   },
+  "keywords": [
+    "api",
+    "http",
+    "koa",
+    "node",
+    "starter kit",
+    "web"
+  ],
+  "author": "Jason Sites <email@jasonsites.com> (https://github.com/jasonsites)",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jasonsites/nsk-koa.git"
   },
-  "keywords": [],
-  "author": "Jason Sites <email@jasonsites.com> (https://github.com/jasonsites)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jasonsites/nsk-koa/issues"
   },
   "homepage": "https://github.com/jasonsites/nsk-koa#readme",
+  "nyc": {
+    "check-coverage": true,
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "temp-directory": "./coverage/.nyc_output"
+  },
   "dependencies": {
-    "app-container": "^0.4.8",
+    "app-container": "^1.0.0",
     "bluebird": "^3.5.1",
-    "boom": "^6.0.0",
+    "boom": "^7.1.1",
     "bunyan": "^1.8.12",
-    "config": "^1.26.2",
-    "joi": "^11.3.4",
-    "koa": "^2.3.0",
+    "config": "^1.29.4",
+    "joi": "^13.1.2",
+    "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-compress": "^2.0.0",
-    "koa-router": "^7.2.1",
-    "lodash": "^4.17.4",
-    "transformalizer": "^1.1.1",
-    "uuid": "^3.1.0"
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.5",
+    "transformalizer": "^1.1.2",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint": "^4.8.0",
-    "eslint-config-airbnb-base": "^12.0.2",
-    "eslint-plugin-import": "^2.7.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "faker": "^4.1.0",
-    "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^3.5.3",
-    "nodemon": "^1.12.1",
-    "nsp": "^2.8.1",
-    "sinon": "^4.1.2",
-    "standard-version": "^4.2.0",
+    "mocha": "^5.0.0",
+    "nodemon": "^1.14.12",
+    "nsp": "^3.1.0",
+    "nyc": "^11.4.1",
+    "sinon": "^4.3.0",
+    "standard-version": "^4.3.0",
     "supertest": "^3.0.0"
   }
 }
