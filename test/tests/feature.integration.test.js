@@ -6,7 +6,7 @@ const { afterEach, before, describe, it } = require('mocha')
 const sinon = require('sinon')
 const { agent } = require('supertest')
 
-const { bootstrap, loadModules } = require('../../utils')
+const { bootstrap, loadModules } = require('../utils')
 
 function generateRequest() {
   const entityId = faker.random.uuid()

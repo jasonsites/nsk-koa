@@ -4,9 +4,9 @@ const { createServer } = require('http')
 const { before, describe, it } = require('mocha')
 const { agent } = require('supertest')
 
-const { bootstrap, loadModules } = require('../../utils')
+const { bootstrap, loadModules } = require('../utils')
 
-describe('[integration] GET /feature/{id}', function () {
+describe('[integration] health', function () {
   before('load modules', async function () {
     this.timeout(30000)
     await bootstrap()
