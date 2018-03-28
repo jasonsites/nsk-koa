@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/jasonsites/nsk-koa/compare/v0.2.0...v0.2.1) (2018-03-28)
+
+
+### Bug Fixes
+
+* restructured tests ([683e7be](https://github.com/jasonsites/nsk-koa/commit/683e7be))
+* reverts to app-container@v0.4.8 ([17b30c9](https://github.com/jasonsites/nsk-koa/commit/17b30c9))
+* updates dependencies ([9b2a093](https://github.com/jasonsites/nsk-koa/commit/9b2a093))
+* updates documentation and dependencies ([6908ac2](https://github.com/jasonsites/nsk-koa/commit/6908ac2))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/jasonsites/nsk-koa/compare/v0.1.1...v0.2.0) (2017-12-30)
 
