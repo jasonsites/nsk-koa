@@ -32,6 +32,7 @@
   "homepage": "https://github.com/jasonsites/nsk-koa#readme",
   "nyc": {
     "check-coverage": true,
+    "lines": 80,
     "reporter": [
       "lcov",
       "text-summary"

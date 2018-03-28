@@ -1,7 +1,7 @@
 const { createLogger } = require('bunyan')
 const config = require('config')
 
-const { name, version } = require('../../package.json')
+const { name, version } = require('../package.json')
 
 module.exports = function logger() {
   const level = config.get('logger.app.level')

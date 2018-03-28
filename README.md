@@ -1,5 +1,5 @@
 # nsk-koa
-node starter kit for koa api applications
+Node starter kit for Koa API applications
 
 ## Installing
 Clone the repo and install dependencies
