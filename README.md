@@ -2,14 +2,14 @@
 node starter kit for koa api applications
 
 ## Installing
+Clone the repo and install dependencies
 ```shell
-# clone the repo and install dependencies
 $ git clone git@github.com:jasonsites/nsk-koa.git
 $ cd nsk-koa && npm i
 ```
 
 ## Testing
-**Run full test suite with code coverage:** *(requires [Docker v1.12+ and Compose v1.7+](https://store.docker.com/search?type=edition&offering=community))*
+**Run full test suite with code coverage** *(requires [Docker v1.12+ and Compose v1.7+](https://store.docker.com/search?type=edition&offering=community))*
 ```shell
 $ docker-compose run nsk-koa
 ```
