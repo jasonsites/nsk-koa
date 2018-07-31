@@ -19,7 +19,7 @@ transformalizer.buildAttributes = function buildAttributes(paths) {
    * @return {Object}
    */
   return function _buildAttributes({ data }) {
-    return { feature: cloneDeep(omit(data, paths)) }
+    return { domain: cloneDeep(omit(data, paths)) }
   }
 }
 

@@ -1,13 +1,13 @@
 const { conflict } = require('boom')
 const { get } = require('lodash')
 
-module.exports = function featureController({ jsonapi, feature, validation }) {
+module.exports = function domainController({ jsonapi, domain, validation }) {
   async function create(ctx) {
     try {
       const { body, method } = ctx.request
       validation.validate({ body, method })
       const data = extractData({ body })
-      const doc = await feature.create({ data })
+      const doc = await domain.create({ data })
       ctx.body = jsonapi.serialize({
         type: 'entity',
         source: doc.attrs,
@@ -26,13 +26,13 @@ module.exports = function featureController({ jsonapi, feature, validation }) {
 
   async function destroy(ctx) {
     const { id } = ctx.params
-    await feature.destroy({ id })
+    await domain.destroy({ id })
     ctx.status = 204
   }
 
   async function detail(ctx) {
     const { id } = ctx.params
-    const doc = await feature.detail({ id })
+    const doc = await domain.detail({ id })
     ctx.body = jsonapi.serialize({
       type: 'entity',
       source: doc.attrs,
@@ -49,7 +49,7 @@ module.exports = function featureController({ jsonapi, feature, validation }) {
    * @return {Object}
    */
   function extractData({ body, id }) {
-    const feat = get(body, 'data.attributes.feature')
+    const feat = get(body, 'data.attributes.domain')
     return Object.assign({}, { id: id || get(body, 'data.id') }, feat)
   }
 
@@ -63,7 +63,7 @@ module.exports = function featureController({ jsonapi, feature, validation }) {
     const { body, method } = ctx.request
     validation.validate({ body, method })
     const data = extractData({ body, id })
-    await feature.update({ data })
+    await domain.update({ data })
     ctx.status = 204
   }
 
@@ -72,7 +72,7 @@ module.exports = function featureController({ jsonapi, feature, validation }) {
 
 module.exports.inject = {
   require: {
-    feature: 'feature',
+    domain: 'domain',
     jsonapi: 'jsonapi',
     validation: 'validation',
   },

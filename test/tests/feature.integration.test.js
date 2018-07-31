@@ -16,7 +16,7 @@ function generateRequest() {
       id: entityId,
       type: 'entity',
       attributes: {
-        feature: {
+        domain: {
           key1: faker.lorem.words(),
           key2: faker.lorem.words(),
         },
@@ -26,7 +26,7 @@ function generateRequest() {
   return { body, entityId }
 }
 
-describe('[integration] POST /feature', function () {
+describe('[integration] POST /domain', function () {
   before('load modules', async function () {
     this.sandbox = sinon.sandbox.create()
     this.timeout(30000)
@@ -42,7 +42,7 @@ describe('[integration] POST /feature', function () {
   describe('failure states', function () {
     it('fails (400) with an invalid payload', function () {
       return this.request
-        .post('/feature')
+        .post('/domain')
         .send({ foo: 'bar' })
         .expect(400)
         .then((res) => {
@@ -59,9 +59,9 @@ describe('[integration] POST /feature', function () {
   describe('success states', function () {
     const { body, entityId } = generateRequest()
 
-    it('succeeds (201) with valid feature payload', function () {
+    it('succeeds (201) with valid domain payload', function () {
       return this.request
-        .post('/feature')
+        .post('/domain')
         .send(body)
         .expect(201)
         .then((res) => {
@@ -78,7 +78,7 @@ describe('[integration] POST /feature', function () {
           expect(links).to.be.an('object')
             .with.all.keys(['self'])
           const { self } = links
-          expect(self).to.equal(`${config.get('api.baseUrl')}/feature/${entityId}`)
+          expect(self).to.equal(`${config.get('api.baseUrl')}/domain/${entityId}`)
         })
     })
   })

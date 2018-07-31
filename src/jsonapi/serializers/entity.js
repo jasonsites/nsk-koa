@@ -4,7 +4,7 @@ const transformalizer = require('../transformalizer')
 const schema = {
   data: {
     id: transformalizer.dataId,
-    links: transformalizer.dataLinks(['feature', ':id']),
+    links: transformalizer.dataLinks(['domain', ':id']),
     attributes: transformalizer.buildAttributes(['createdAt', 'id', 'updatedAt']),
   },
 }
