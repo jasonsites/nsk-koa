@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.3](https://github.com/jasonsites/nsk-koa/compare/v0.2.2...v0.2.3) (2019-03-18)
+
+
+### Bug Fixes
+
+* **security:** updates insecure dependencies ([f90e374](https://github.com/jasonsites/nsk-koa/commit/f90e374))
+* **security:** updates vulnerable packages ([3be5d02](https://github.com/jasonsites/nsk-koa/commit/3be5d02))
+* updates non-breaking dependencies ([2dd2870](https://github.com/jasonsites/nsk-koa/commit/2dd2870))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/jasonsites/nsk-koa/compare/v0.2.1...v0.2.2) (2018-07-31)
 
