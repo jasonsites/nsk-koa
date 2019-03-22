@@ -1,3 +1,8 @@
+/**
+ * @file repo/index.js
+ * @overview repository
+ */
+
 const Bluebird = require('bluebird')
 const { notFound } = require('boom')
 const { isNull } = require('lodash')

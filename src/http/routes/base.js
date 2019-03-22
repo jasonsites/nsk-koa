@@ -1,3 +1,8 @@
+/**
+ * @file http/routes/base.js
+ * @overview root (`/`) router
+ */
+
 const Router = require('koa-router')
 
 module.exports = function createRouter() {

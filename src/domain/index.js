@@ -1,3 +1,7 @@
+/**
+ * @file domain/index.js
+ * @overview domain logic
+ */
 
 module.exports = function domain(repo) {
   async function create({ data }) {

@@ -1,3 +1,8 @@
+/**
+ * @file http/middleware/error-handler.js
+ * @overview http error handler
+ */
+
 const { boomify } = require('boom')
 
 module.exports = async function errorHandler(ctx, next) {

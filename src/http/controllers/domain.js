@@ -1,3 +1,8 @@
+/**
+ * @file http/controllers/domain.js
+ * @overview domain routes handlers
+ */
+
 const { conflict } = require('boom')
 const { get } = require('lodash')
 

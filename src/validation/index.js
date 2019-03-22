@@ -1,3 +1,8 @@
+/**
+ * @file validation/index.js
+ * @overview schema validation
+ */
+
 const { badRequest } = require('boom')
 const joi = require('joi')
 
