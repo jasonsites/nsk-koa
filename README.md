@@ -15,6 +15,6 @@ $ docker-compose run nsk-koa
 ```
 
 ## License
-Copyright (c) 2018 Jason Sites
+Copyright (c) 2019 Jason Sites
 
 Licensed under the [MIT License](LICENSE.md)

@@ -5,15 +5,21 @@
 
 const Bluebird = require('bluebird')
 const { notFound } = require('boom')
+const config = require('config')
 const { isNull } = require('lodash')
 
-module.exports = function createRepo() {
-  function create({ data }) {
-    return Bluebird.try(() => ({ attrs: data }))
+module.exports = function createRepo({ log }) {
+  const { active } = config.get('logger.repo')
+
+  async function create({ data }) {
+    const result = await Bluebird.try(() => ({ attrs: data }))
+    if (active) log.info(result)
+    return result
   }
 
   async function get({ id }) {
     const result = await Bluebird.try(() => ({ id }))
+    if (active) log.info(result)
     if (isNull(result)) {
       throw notFound(`Unable to find resource with id ${id}`)
     }
@@ -21,12 +27,15 @@ module.exports = function createRepo() {
   }
 
   async function destroy({ id }) {
-    await Bluebird.try(() => ({ id }))
+    const result = await Bluebird.try(() => ({ id }))
+    if (active) log.info(result)
     return null
   }
 
-  function update({ data }) {
-    return Bluebird.try(() => ({ attrs: data }))
+  async function update({ data }) {
+    const result = await Bluebird.try(() => ({ attrs: data }))
+    if (active) log.info(result)
+    return result
   }
 
   return { create, get, destroy, update }
@@ -34,4 +43,7 @@ module.exports = function createRepo() {
 
 module.exports.inject = {
   name: 'repo',
+  require: {
+    log: 'logger',
+  },
 }

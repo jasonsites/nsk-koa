@@ -12,7 +12,7 @@
   "logger": {
     "app": {
       "active": true,
-      "debug": true,
+      "debug": false,
       "level": "info"
     },
     "request": {
@@ -20,8 +20,13 @@
       "debug": true,
       "level": "info"
     },
+    "repo": {
+      "active": false,
+      "debug": false,
+      "level": "info"
+    },
     "response": {
-      "active": true,
+      "active": false,
       "debug": false,
       "level": "info"
     }
