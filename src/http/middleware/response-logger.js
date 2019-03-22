@@ -5,13 +5,11 @@
 
 const config = require('config')
 
-module.exports = function addResponseLogger({ logger }) {
+module.exports = function addResponseLogger() {
   return async function responseLogger(ctx, next) {
     await next()
-    const { response: { active, debug, level } } = config.get('logger')
-    const { ip, response } = ctx
-    const requestId = response.get('X-Request-ID')
-    const log = logger.child({ ip, level, req_id: requestId })
+    const { active, debug } = config.get('logger.response')
+    const { log, response } = ctx
     if (active) log.info(serializeResponse({ debug, response }))
   }
 

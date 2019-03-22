@@ -8,12 +8,12 @@ const uuid = require('uuid')
 
 module.exports = function addRequestLogger({ logger }) {
   return async function requestLogger(ctx, next) {
-    const { request: { active, debug, level } } = config.get('logger')
+    const { active, debug, level } = config.get('logger.request')
     const { ip, request } = ctx
     const requestId = ctx.request.get('X-Request-ID') || uuid.v4()
     ctx.response.set('X-Request-ID', requestId)
-    request.log = logger.child({ ip, level, req_id: requestId })
-    if (active) request.log.info(serializeRequest({ debug, request }))
+    ctx.log = logger.child({ ip, level, req_id: requestId })
+    if (active) ctx.log.info(serializeRequest({ debug, request }))
     return next()
   }
 

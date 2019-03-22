@@ -10,12 +10,10 @@ const compress = require('koa-compress')
 module.exports = function createRouter({ logger, middleware, routes }) {
   function configureMiddleware(app) {
     app.use(middleware.errorHandler)
-    app.use(middleware.responseTime({ logger }))
+    app.use(middleware.responseTime())
+    app.use(middleware.responseLogger())
     app.use(middleware.requestLogger({ logger }))
-    app.use(middleware.responseLogger({ logger }))
-    app.use(bodyParser({
-      extendTypes: { json: ['application/vnd.api+json'] },
-    }))
+    app.use(bodyParser({ extendTypes: { json: ['application/vnd.api+json'] } }))
     app.use(compress())
   }
 
