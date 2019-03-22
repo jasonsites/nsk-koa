@@ -1,3 +1,8 @@
+/**
+ * @file http/routes/health.js
+ * @overview healthcheck router
+ */
+
 const Router = require('koa-router')
 
 module.exports = function createRouter() {

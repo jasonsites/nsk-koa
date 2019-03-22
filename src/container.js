@@ -1,3 +1,8 @@
+/**
+ * @file container.js
+ * @overview dependency injection container
+ */
+
 const Container = require('app-container')
 
 const container = new Container({

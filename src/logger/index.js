@@ -1,3 +1,8 @@
+/**
+ * @file logger/index.js
+ * @overview application (base) logger
+ */
+
 const { createLogger } = require('bunyan')
 const config = require('config')
 

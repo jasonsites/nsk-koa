@@ -1,3 +1,8 @@
+/**
+ * @file http/app.js
+ * @overview http server
+ */
+
 const config = require('config')
 const Koa = require('koa')
 
