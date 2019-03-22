@@ -1,18 +1,31 @@
 {
   "api": {
-    "baseUrl": "https://api.example.com",
-    "port": 9000
+    "port": 9000,
+    "url": {
+      "local": "http://127.0.0.1",
+      "remote": ""
+    }
   },
   "logger": {
     "app": {
       "active": true,
-      "debug": false,
+      "debug": true,
       "level": "info"
     },
     "request": {
-      "active": false,
+      "active": true,
       "debug": true,
       "level": "info"
+    },
+    "response": {
+      "active": true,
+      "debug": false,
+      "level": "info"
     }
+  },
+  "service": {
+    "baseURL": "",
+    "headers": {},
+    "timeout": 1000
   }
 }
