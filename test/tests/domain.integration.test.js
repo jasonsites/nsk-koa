@@ -78,7 +78,7 @@ describe('[integration] POST /domain', function () {
           expect(links).to.be.an('object')
             .with.all.keys(['self'])
           const { self } = links
-          expect(self).to.equal(`${config.get('api.baseUrl')}/domain/${entityId}`)
+          expect(self).to.equal(`${config.get('api.local.baseURL')}/domain/${entityId}`)
         })
     })
   })

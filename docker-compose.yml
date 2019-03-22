@@ -9,11 +9,11 @@ services:
     command: npm run coverage
     environment:
       DEBUG: app-container*
-      NODE_CONFIG_DIR: /home/app/test/config
+      NODE_CONFIG_DIR: /opt/app/test/config
       NODE_ENV: test
     ports:
       - 9000:9000
     volumes:
-      - ./coverage:/home/app/coverage
-      - ./src:/home/app/src
-      - ./test:/home/app/test
+      - ./coverage:/opt/app/coverage
+      - ./src:/opt/app/src
+      - ./test:/opt/app/test

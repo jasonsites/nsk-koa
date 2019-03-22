@@ -1,6 +1,6 @@
-FROM node:carbon
+FROM node:10
 
-ENV APP=/home/app/nsk-koa
+ENV APP=/opt/app
 WORKDIR $APP
 
 COPY package.json package-lock.json $APP/
