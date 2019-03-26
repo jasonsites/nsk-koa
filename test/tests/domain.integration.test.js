@@ -60,6 +60,7 @@ describe('[integration] POST /domain', function () {
     const { body, entityId } = generateRequest()
 
     it('succeeds (201) with valid domain payload', function () {
+      const baseUrl = config.get('api.local.baseURL')
       return this.request
         .post('/domain')
         .send(body)
@@ -78,7 +79,7 @@ describe('[integration] POST /domain', function () {
           expect(links).to.be.an('object')
             .with.all.keys(['self'])
           const { self } = links
-          expect(self).to.equal(`${config.get('api.local.baseURL')}/domain/${entityId}`)
+          expect(self).to.equal(`${baseUrl}/domain/${entityId}`)
         })
     })
   })

@@ -9,7 +9,7 @@ const config = require('config')
 const { name, version } = require('../../package.json')
 
 module.exports = function logger() {
-  const level = config.get('logger.app.level')
+  const { level } = config.get('logger.app')
   return createLogger({ level, name, version })
 }
 

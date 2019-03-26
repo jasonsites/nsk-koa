@@ -13,7 +13,7 @@ module.exports = function createApp({ logger, router }) {
     try {
       router.configureMiddleware(app)
       router.registerRoutes(app)
-      const port = config.get('api.local.port')
+      const { port } = config.get('api.local')
       app.server = app.listen(port)
       logger.info(`Application listening on port: ${port}`)
     } catch (err) {
