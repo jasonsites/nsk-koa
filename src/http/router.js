@@ -11,9 +11,11 @@ module.exports = function createRouter({ logger, middleware, routes }) {
   function configureMiddleware(app) {
     app.use(middleware.errorHandler)
     app.use(middleware.responseTime())
+    app.use(bodyParser({
+      extendTypes: { json: ['application/vnd.api+json'] },
+    }))
     app.use(middleware.responseLogger())
     app.use(middleware.requestLogger({ logger }))
-    app.use(bodyParser({ extendTypes: { json: ['application/vnd.api+json'] } }))
     app.use(compress())
   }
 
