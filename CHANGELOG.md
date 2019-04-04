@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.3.0](https://github.com/jasonsites/nsk-koa/compare/v0.2.3...v0.3.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* updates docker configuration ([51d16f2](https://github.com/jasonsites/nsk-koa/commit/51d16f2))
+* **http:** reorders middleware to place bodyparser earlier in the chain (closes [#8](https://github.com/jasonsites/nsk-koa/issues/8)) ([d30f662](https://github.com/jasonsites/nsk-koa/commit/d30f662))
+
+
+### Features
+
+* **http:** adds response logging and improves correlation/time tracking ([aecb578](https://github.com/jasonsites/nsk-koa/commit/aecb578))
+* adds file overview comments ([9e1d5de](https://github.com/jasonsites/nsk-koa/commit/9e1d5de))
+* **repo:** adds repository level logging support ([eb73831](https://github.com/jasonsites/nsk-koa/commit/eb73831))
+
+
+
 ## [0.2.3](https://github.com/jasonsites/nsk-koa/compare/v0.2.2...v0.2.3) (2019-03-18)
 
 
