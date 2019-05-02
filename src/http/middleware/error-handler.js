@@ -13,16 +13,16 @@ module.exports = async function errorHandler(ctx, next) {
     if (log) log.error(err)
     else console.error(err)
     if (!err.isBoom) boomify(err, { statusCode: 500 })
-    const { payload } = err.output
+    const { error, message, statusCode } = err.output.payload
     ctx.body = {
       errors: [{
-        title: payload.error,
-        detail: payload.message,
-        status: payload.statusCode.toString(),
+        title: error,
+        detail: message,
+        status: statusCode.toString(),
         meta: err.data,
       }],
     }
-    ctx.status = payload.statusCode
+    ctx.status = statusCode
     ctx.state.error = err
   }
 }

@@ -1,7 +1,5 @@
 version: '3'
-
 services:
-
   nsk-koa:
     build:
       context: .
@@ -12,7 +10,7 @@ services:
       NODE_CONFIG_DIR: /opt/app/test/config
       NODE_ENV: test
     ports:
-      - 9000:9000
+      - 9002:9002
     volumes:
       - ./coverage:/opt/app/coverage
       - ./src:/opt/app/src
