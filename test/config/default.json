@@ -1,13 +1,7 @@
 {
   "api": {
-    "local": {
-      "baseURL": "http://127.0.0.1",
-      "port": 9000
-    },
-    "remote": {
-      "baseURL": "",
-      "port": 9000
-    }
+    "baseURL": "http://127.0.0.1",
+    "port": 9002
   },
   "logger": {
     "app": {

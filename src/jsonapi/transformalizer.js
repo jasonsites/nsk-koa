@@ -46,7 +46,7 @@ transformalizer.dataLinks = function dataLinks(pathSegments) {
    * @return {String}
    */
   return function _dataLinks({ id }) {
-    const baseUrl = config.get('api.local.baseURL')
+    const baseUrl = config.get('api.baseURL')
     const path = pathSegments.map((segment) => {
       if (startsWith(segment, ':')) {
         const param = segment.slice(1)
