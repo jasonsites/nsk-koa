@@ -21,13 +21,9 @@ describe('[integration] health', function () {
         .expect(200)
         .then((res) => {
           const doc = res.body
-          expect(doc).to.be.an('object')
-            .with.all.keys(['meta'])
-          const { meta } = doc
-          expect(meta).to.be.an('object')
-            .with.all.keys(['status'])
-          const { status } = meta
-          expect(status).to.equal('healthy')
+          expect(doc).to.be.an('object').with.all.keys(['meta'])
+          expect(doc.meta).to.be.an('object').with.all.keys(['status'])
+          expect(doc.meta.status).to.equal('healthy')
         }))
     })
   })

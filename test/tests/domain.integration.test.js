@@ -13,8 +13,8 @@ function generateRequest() {
   const body = {
     jsonapi: { version: '1.0' },
     data: {
-      id: entityId,
       type: 'entity',
+      id: entityId,
       attributes: {
         domain: {
           key1: faker.lorem.words(),
@@ -28,7 +28,7 @@ function generateRequest() {
 
 describe('[integration] POST /domain', function () {
   before('load modules', async function () {
-    this.sandbox = sinon.sandbox.create()
+    this.sandbox = sinon.createSandbox()
     this.timeout(30000)
     await bootstrap()
     await loadModules.call(this, { app: 'http/app' })
@@ -46,10 +46,10 @@ describe('[integration] POST /domain', function () {
         .send({ foo: 'bar' })
         .expect(400)
         .then((res) => {
-          expect(res.body).to.have.property('errors')
-            .that.is.an('array')
-            .with.lengthOf(1)
-          const err = res.body.errors[0]
+          const doc = res.body
+          expect(doc).to.be.an('object').with.all.keys(['errors'])
+          expect(doc.errors).to.be.an('array').with.lengthOf(1)
+          const err = doc.errors[0]
           expect(err).to.have.property('title', 'Bad Request')
           expect(err).to.have.property('status', '400')
         })
@@ -60,15 +60,14 @@ describe('[integration] POST /domain', function () {
     const { body, entityId } = generateRequest()
 
     it('succeeds (201) with valid domain payload', function () {
-      const baseUrl = config.get('api.local.baseURL')
+      const baseUrl = config.get('api.baseURL')
       return this.request
         .post('/domain')
         .send(body)
         .expect(201)
         .then((res) => {
           const doc = res.body
-          expect(doc).to.be.an('object')
-            .with.all.keys(['jsonapi', 'data'])
+          expect(doc).to.be.an('object').with.all.keys(['jsonapi', 'data'])
           const { data } = doc
           expect(data).to.be.an('object')
             .with.all.keys(['type', 'id', 'attributes', 'links'])
@@ -76,8 +75,7 @@ describe('[integration] POST /domain', function () {
           expect(type).to.equal(body.data.type)
           expect(id).to.equal(entityId)
           expect(attributes).to.deep.equal(body.data.attributes)
-          expect(links).to.be.an('object')
-            .with.all.keys(['self'])
+          expect(links).to.be.an('object').with.all.keys(['self'])
           const { self } = links
           expect(self).to.equal(`${baseUrl}/domain/${entityId}`)
         })

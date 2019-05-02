@@ -4,7 +4,7 @@
  */
 
 const { badRequest } = require('boom')
-const joi = require('joi')
+const joi = require('@hapi/joi')
 
 module.exports = function createValidator() {
   function validate({ body, method }) {
@@ -14,7 +14,7 @@ module.exports = function createValidator() {
     } catch (err) {
       const msg = Array.isArray(err.details)
         ? err.details.map(detail => detail.message).join(', ')
-        : ''
+        : err.message
       throw badRequest(`Invalid request body: ${msg}`)
     }
   }
@@ -45,7 +45,7 @@ function generateSchema(method) {
         domain: joi.object({
           // no restrictions on field names
         }).required()
-          .pattern(/.*/g, joi.alternatives(dataTypes)),
+          .pattern(/.*/, joi.alternatives(dataTypes)),
       }).required(),
     }).required(),
   })
