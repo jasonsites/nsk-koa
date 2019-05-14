@@ -9,7 +9,7 @@ module.exports = async function errorHandler(ctx, next) {
   try {
     await next()
   } catch (err) {
-    const { log } = ctx.request
+    const { log } = ctx
     if (log) log.error(err)
     else console.error(err)
     if (!err.isBoom) boomify(err, { statusCode: 500 })
