@@ -6,7 +6,7 @@
 const config = require('config')
 const uuid = require('uuid')
 
-module.exports = function addRequestLogger({ logger }) {
+module.exports = function createMiddleware({ logger }) {
   return async function requestLogger(ctx, next) {
     const { active, debug, level } = config.get('logger.request')
     const { ip, request } = ctx

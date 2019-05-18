@@ -16,9 +16,9 @@ module.exports = function createApp({ logger, router }) {
       const { port } = config.get('api')
       app.server = app.listen(port)
       logger.info(`Application listening on port: ${port}`)
-    } catch (err) {
-      console.error('Error starting application', err)
-      throw err
+    } catch (error) {
+      console.error('Error starting application', error)
+      throw error
     }
   }
 

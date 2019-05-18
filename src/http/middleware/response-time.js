@@ -3,7 +3,7 @@
  * @overview http response time tracker
  */
 
-module.exports = function addResponseTime() {
+module.exports = function createMiddleware() {
   return async function responseTime(ctx, next) {
     const start = Date.now()
     await next()
