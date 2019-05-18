@@ -6,7 +6,7 @@
 const { conflict } = require('boom')
 const { get } = require('lodash')
 
-module.exports = function domainController({ jsonapi, domain, validation }) {
+module.exports = function domainController({ domain, jsonapi, validation }) {
   async function create(ctx) {
     try {
       const { body, method } = ctx.request

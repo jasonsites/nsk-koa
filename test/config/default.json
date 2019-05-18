@@ -23,6 +23,11 @@
       "active": false,
       "debug": false,
       "level": "info"
+    },
+    "validation": {
+      "active": false,
+      "debug": false,
+      "level": "info"
     }
   },
   "service": {

@@ -7,8 +7,8 @@ const Router = require('koa-router')
 
 module.exports = function createRouter() {
   async function get(ctx) {
-    ctx.status = 200
     ctx.body = { meta: { status: 'healthy' } }
+    ctx.status = 200
   }
 
   const router = new Router({ prefix: '/health' })

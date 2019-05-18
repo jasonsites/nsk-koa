@@ -5,7 +5,7 @@
 
 const config = require('config')
 
-module.exports = function addResponseLogger() {
+module.exports = function createMiddleware() {
   return async function responseLogger(ctx, next) {
     await next()
     const { active, debug } = config.get('logger.response')

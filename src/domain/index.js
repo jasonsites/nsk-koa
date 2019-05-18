@@ -1,6 +1,7 @@
 /**
  * @file domain/index.js
  * @overview domain logic
+ * NOTE: this module should be renamed to reflect the actual domain
  */
 
 module.exports = function domain(repo) {
