@@ -1,15 +1,15 @@
 const { expect } = require('chai')
 const config = require('config')
-const faker = require('faker')
 const { createServer } = require('http')
 const { afterEach, before, describe, it } = require('mocha')
 const sinon = require('sinon')
 const { agent } = require('supertest')
 
+const chance = require('../mocks/chance')
 const { bootstrap, loadModules } = require('../utils')
 
 function generateRequest() {
-  const entityId = faker.random.uuid()
+  const entityId = chance.guid()
   const body = {
     jsonapi: { version: '1.0' },
     data: {
@@ -17,8 +17,8 @@ function generateRequest() {
       id: entityId,
       attributes: {
         domain: {
-          key1: faker.lorem.words(),
-          key2: faker.lorem.words(),
+          key1: chance.sentence(),
+          key2: chance.sentence(),
         },
       },
     },
