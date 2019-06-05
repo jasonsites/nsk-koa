@@ -1,5 +1,7 @@
 const transformalizer = require('./transformalizer')
 
+module.exports = { createSerializer }
+
 /**
  * Registers schema by name and returns an object with a serialize method
  * @param  {String} options.name   - schema name
@@ -40,4 +42,4 @@ function createSerializer({ name, schema }) {
   return { serialize }
 }
 
-module.exports = { createSerializer }
+module.exports.inject = { }
