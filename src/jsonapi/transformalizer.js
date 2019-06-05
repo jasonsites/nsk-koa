@@ -4,6 +4,8 @@ const createTransformalizer = require('transformalizer')
 
 const transformalizer = createTransformalizer()
 
+module.exports = transformalizer
+
 /**
  * Factory function that returns an attribute building function
  * that picks a set of paths off the source object
@@ -72,4 +74,4 @@ transformalizer.dataMeta = function dataMeta() {
   return meta
 }
 
-module.exports = transformalizer
+module.exports.inject = { }

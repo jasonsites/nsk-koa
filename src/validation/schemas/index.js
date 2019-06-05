@@ -5,6 +5,8 @@
 
 const joi = require('@hapi/joi')
 
+module.exports = { entitySchema }
+
 /**
  * Create joi validation schema for POST/PATCH request bodies
  * @param  {String} method - http request method
@@ -35,6 +37,4 @@ function entitySchema(method) {
   })
 }
 
-module.exports = {
-  entitySchema,
-}
+module.exports.inject = { }
