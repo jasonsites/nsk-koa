@@ -1,6 +1,25 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.3.3](https://github.com/jasonsites/nsk-koa/compare/v0.3.2...v0.3.3) (2019-07-16)
+
+
+### Bug Fixes
+
+* **config:** adds non-root user to test docker image ([8027d1e](https://github.com/jasonsites/nsk-koa/commit/8027d1e))
+* **container:** updates `app-container` package to v1.1.2 ([decff78](https://github.com/jasonsites/nsk-koa/commit/decff78))
+* **http:** wraps `error-handler` middleware to allow for dependency injection ([11c6dec](https://github.com/jasonsites/nsk-koa/commit/11c6dec))
+* **security:** updates packages to remove security vulnerabilities ([1a7e47e](https://github.com/jasonsites/nsk-koa/commit/1a7e47e))
+* **test:** updates test runner script to correctly use recursive glob pattern for finding test files ([04d2735](https://github.com/jasonsites/nsk-koa/commit/04d2735))
+* **validation:** restructures validation module to allow for future extensibility ([d4bd201](https://github.com/jasonsites/nsk-koa/commit/d4bd201))
+
+
+### Tests
+
+* replaces `faker` with `chance` mock generator library ([521f836](https://github.com/jasonsites/nsk-koa/commit/521f836))
+
+
 
 ## [0.3.2](https://github.com/jasonsites/nsk-koa/compare/v0.3.1...v0.3.2) (2019-05-14)
 
