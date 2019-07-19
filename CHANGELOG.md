@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/jasonsites/nsk-koa/compare/v0.3.3...v0.4.0) (2019-07-19)
+
+
+### Bug Fixes
+
+* removes jsonapi module ([03bee22](https://github.com/jasonsites/nsk-koa/commit/03bee22))
+
+
+### Features
+
+* adds serializers module ([21398a0](https://github.com/jasonsites/nsk-koa/commit/21398a0))
+
+
+
 ### [0.3.3](https://github.com/jasonsites/nsk-koa/compare/v0.3.2...v0.3.3) (2019-07-16)
 
 
