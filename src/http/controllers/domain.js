@@ -1,15 +1,14 @@
 /**
  * @file http/controllers/domain.js
- * @overview domain routes handlers
+ * @overview controller for domain routes
  */
 
-module.exports = function domainController({ domain, validation }) {
+module.exports = function domainController({ domain, serializers, validation }) {
   async function create(ctx) {
     const { body, method } = ctx.request
     validation.validate({ body, method })
-    const data = body
-    const doc = await domain.create({ data })
-    ctx.body = doc // TODO: serializer
+    const data = await domain.create({ data: body })
+    ctx.body = serializers.domain.buildDomain({ data })
     ctx.status = 200
     ctx.type = 'application/json'
   }
@@ -22,8 +21,8 @@ module.exports = function domainController({ domain, validation }) {
 
   async function detail(ctx) {
     const { id } = ctx.params
-    const doc = await domain.detail({ id })
-    ctx.body = doc // TODO: serializer
+    const data = await domain.detail({ id })
+    ctx.body = serializers.domain.buildDomain({ data })
     ctx.status = 200
     ctx.type = 'application/json'
   }
@@ -37,8 +36,7 @@ module.exports = function domainController({ domain, validation }) {
     // const { id } = ctx.params
     const { body, method } = ctx.request
     validation.validate({ body, method })
-    const data = body
-    await domain.update({ data })
+    await domain.update({ data: body })
     ctx.status = 204
   }
 
@@ -48,6 +46,9 @@ module.exports = function domainController({ domain, validation }) {
 module.exports.inject = {
   require: {
     domain: 'domain',
+    serializers: {
+      domain: 'serializers/domain',
+    },
     validation: 'validation',
   },
 }

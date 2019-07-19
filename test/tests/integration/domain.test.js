@@ -1,12 +1,14 @@
 const { expect } = require('chai')
-// const config = require('config')
 const { createServer } = require('http')
 const { afterEach, before, describe, it } = require('mocha')
 const sinon = require('sinon')
 const { agent } = require('supertest')
 
-const chance = require('../../mocks/chance')
+const chance = require('../../fixtures/chance')
 const { bootstrap, loadModules } = require('../../utils')
+const {
+  assertDomain,
+} = require('../assertions')
 
 function generateRequest() {
   const entityId = chance.guid()
@@ -53,14 +55,13 @@ describe('[integration] POST /domain', function () {
     const { body } = generateRequest()
 
     it('succeeds (200) with valid domain payload', function () {
-      // const baseUrl = config.get('api.baseURL')
       return this.request
         .post('/domain')
         .send(body)
         .expect(200)
         .then((res) => {
           const doc = res.body
-          expect(doc).to.be.an('object').with.all.keys(['domain'])
+          assertDomain({ body, data: doc })
         })
     })
   })
