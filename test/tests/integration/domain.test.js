@@ -1,26 +1,19 @@
 const { expect } = require('chai')
-const config = require('config')
+// const config = require('config')
 const { createServer } = require('http')
 const { afterEach, before, describe, it } = require('mocha')
 const sinon = require('sinon')
 const { agent } = require('supertest')
 
-const chance = require('../mocks/chance')
-const { bootstrap, loadModules } = require('../utils')
+const chance = require('../../mocks/chance')
+const { bootstrap, loadModules } = require('../../utils')
 
 function generateRequest() {
   const entityId = chance.guid()
   const body = {
-    jsonapi: { version: '1.0' },
-    data: {
-      type: 'entity',
-      id: entityId,
-      attributes: {
-        domain: {
-          key1: chance.sentence(),
-          key2: chance.sentence(),
-        },
-      },
+    domain: {
+      key1: chance.sentence(),
+      key2: chance.sentence(),
     },
   }
   return { body, entityId }
@@ -57,27 +50,17 @@ describe('[integration] POST /domain', function () {
   })
 
   describe('success states', function () {
-    const { body, entityId } = generateRequest()
+    const { body } = generateRequest()
 
-    it('succeeds (201) with valid domain payload', function () {
-      const baseUrl = config.get('api.baseURL')
+    it('succeeds (200) with valid domain payload', function () {
+      // const baseUrl = config.get('api.baseURL')
       return this.request
         .post('/domain')
         .send(body)
-        .expect(201)
+        .expect(200)
         .then((res) => {
           const doc = res.body
-          expect(doc).to.be.an('object').with.all.keys(['jsonapi', 'data'])
-          const { data } = doc
-          expect(data).to.be.an('object')
-            .with.all.keys(['type', 'id', 'attributes', 'links'])
-          const { type, id, attributes, links } = data
-          expect(type).to.equal(body.data.type)
-          expect(id).to.equal(entityId)
-          expect(attributes).to.deep.equal(body.data.attributes)
-          expect(links).to.be.an('object').with.all.keys(['self'])
-          const { self } = links
-          expect(self).to.equal(`${baseUrl}/domain/${entityId}`)
+          expect(doc).to.be.an('object').with.all.keys(['domain'])
         })
     })
   })

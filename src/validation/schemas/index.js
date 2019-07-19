@@ -18,22 +18,7 @@ function entitySchema(method) {
   else dataTypes.push(joi.string())
 
   return joi.object({
-    jsonapi: joi.object({
-      version: joi.string(),
-    }).required(),
-    meta: joi.object({
-      // no restrictions on field names
-    }).unknown(true),
-    data: joi.object({
-      type: joi.string().valid('entity').required(),
-      id: joi.string().required(),
-      attributes: joi.object({
-        domain: joi.object({
-          // no restrictions on field names
-        }).required()
-          .pattern(/.*/, joi.alternatives(dataTypes)),
-      }).required(),
-    }).required(),
+    domain: joi.object({}).unknown(true),
   })
 }
 

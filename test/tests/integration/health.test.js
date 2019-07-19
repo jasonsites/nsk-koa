@@ -4,7 +4,7 @@ const { createServer } = require('http')
 const { before, describe, it } = require('mocha')
 const { agent } = require('supertest')
 
-const { bootstrap, loadModules } = require('../utils')
+const { bootstrap, loadModules } = require('../../utils')
 
 describe('[integration] health', function () {
   before('load modules', async function () {
