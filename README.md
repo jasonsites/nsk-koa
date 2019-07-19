@@ -9,7 +9,7 @@ $ cd nsk-koa && npm i
 ```
 
 ## Testing
-**Run full test suite with code coverage** *(requires [Docker v1.12+ and Compose v1.7+](https://store.docker.com/search?type=edition&offering=community))*
+**Run full test suite with code coverage** *(requires [Docker Desktop](https://www.docker.com/products/docker-desktop))*
 ```shell
 $ docker-compose run nsk-koa
 ```

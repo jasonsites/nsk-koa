@@ -4,16 +4,14 @@
  */
 
 const { notImplemented, methodNotAllowed } = require('boom')
-const bodyParser = require('koa-bodyparser')
+const koaBody = require('koa-body')
 const compress = require('koa-compress')
 
 module.exports = function createRouter({ logger, middleware, routes }) {
   function configureMiddleware(app) {
     app.use(middleware.errorHandler)
     app.use(middleware.responseTime())
-    app.use(bodyParser({
-      extendTypes: { json: ['application/vnd.api+json'] },
-    }))
+    app.use(koaBody({ includeUnparsed: true }))
     app.use(middleware.responseLogger())
     app.use(middleware.requestLogger({ logger }))
     app.use(compress())

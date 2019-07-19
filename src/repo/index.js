@@ -12,7 +12,7 @@ module.exports = function createRepo({ log }) {
   const { active } = config.get('logger.repo')
 
   async function create({ data }) {
-    const result = await Bluebird.try(() => ({ attrs: data }))
+    const result = await Bluebird.try(() => ({ domain: data }))
     if (active) log.info(result)
     return result
   }
@@ -33,7 +33,7 @@ module.exports = function createRepo({ log }) {
   }
 
   async function update({ data }) {
-    const result = await Bluebird.try(() => ({ attrs: data }))
+    const result = await Bluebird.try(() => ({ domain: data }))
     if (active) log.info(result)
     return result
   }

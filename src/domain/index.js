@@ -4,7 +4,7 @@
  * NOTE: this module should be renamed to reflect the actual domain
  */
 
-module.exports = function domain(repo) {
+module.exports = function domain({ repo }) {
   async function create({ data }) {
     return repo.create({ data })
   }
@@ -26,5 +26,7 @@ module.exports = function domain(repo) {
 
 module.exports.inject = {
   name: 'domain',
-  require: ['repo'],
+  require: {
+    repo: 'repo',
+  },
 }
