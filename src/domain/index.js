@@ -5,27 +5,29 @@
  */
 
 module.exports = function domain({ repo }) {
-  async function create({ data, type }) {
-    return repo.create({ data, type })
-  }
+  return (correlation) => {
+    async function create({ data, requestId, type }) {
+      return repo(correlation).create({ data, requestId, type })
+    }
 
-  async function destroy({ id, type }) {
-    return repo.destroy({ id, type })
-  }
+    async function destroy({ id, requestId, type }) {
+      return repo(correlation).destroy({ id, requestId, type })
+    }
 
-  async function detail({ id, type }) {
-    return repo.get({ id, type })
-  }
+    async function detail({ id, requestId, type }) {
+      return repo(correlation).get({ id, requestId, type })
+    }
 
-  async function list({ filters, page, sort, type }) {
-    return repo.list({ filters, page, sort, type })
-  }
+    async function list({ filters, page, requestId, sort, type }) {
+      return repo(correlation).list({ filters, page, requestId, sort, type })
+    }
 
-  async function update({ data, type }) {
-    return repo.update({ data, type })
-  }
+    async function update({ data, requestId, type }) {
+      return repo(correlation).update({ data, requestId, type })
+    }
 
-  return { create, destroy, detail, list, update }
+    return { create, destroy, detail, list, update }
+  }
 }
 
 module.exports.inject = {
