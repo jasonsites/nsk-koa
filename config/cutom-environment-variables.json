@@ -11,14 +11,11 @@
       "level": "LOGGER_APP_LEVEL"
     },
     "http": {
-      "request": {
-        "enabled": "LOGGER_HTTP_REQ_ENABLED",
-        "level": "LOGGER_HTTP_REQ_LEVEL"
+      "enabled": {
+        "request": "LOGGER_HTTP_ENABLED_REQ",
+        "response": "LOGGER_HTTP_ENABLED_RES"
       },
-      "response": {
-        "enabled": "LOGGER_HTTP_RES_ENABLED",
-        "level": "LOGGER_HTTP_RES_LEVEL"
-      }
+      "level": "LOGGER_HTTP_LEVEL"
     },
     "repo": {
       "enabled": "LOGGER_REPO_ENABLED",

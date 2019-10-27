@@ -1,11 +1,11 @@
 const { createServer } = require('http')
 
 const Bluebird = require('bluebird')
-const { expect } = require('chai')
 const config = require('config')
 const { before, describe, it } = require('mocha')
 const { agent } = require('supertest')
 
+const assertions = require('../assertions')
 const { bootstrap, loadModules } = require('../../utils')
 
 describe('[integration] /{namespace}/health', function () {
@@ -22,10 +22,8 @@ describe('[integration] /{namespace}/health', function () {
       return Bluebird.try(() => this.request
         .get(`/${this.namespace}/health`)
         .expect(200)
-        .then(({ body: doc }) => {
-          expect(doc).to.be.an('object').with.all.keys(['meta'])
-          expect(doc.meta).to.be.an('object').with.all.keys(['status'])
-          expect(doc.meta.status).to.equal('healthy')
+        .then(({ body: actual }) => {
+          assertions.common.assertHealth({ actual })
         }))
     })
   })

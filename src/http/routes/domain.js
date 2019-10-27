@@ -11,7 +11,7 @@ module.exports = function createRouter({ controller, core, middleware }) {
 
   const { namespace } = config.get('api')
   const router = new Router({ prefix: `/${namespace}/domain` })
-  router.use(middleware.localType({ type: core.Entity.Domain }))
+  router.use(middleware.localType({ type: core.Entity.DomainEntity }))
 
   router.get('/:id', detail)
   router.post('/', create)

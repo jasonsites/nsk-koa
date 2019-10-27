@@ -5,7 +5,7 @@
 
 module.exports = function core({ errors }) {
   const Entity = {
-    Domain: 'domain',
+    DomainEntity: 'domain_entity',
   }
 
   return { Entity, ...errors }
