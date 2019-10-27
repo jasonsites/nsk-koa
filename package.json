@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "npm prune",
     "coverage": "nyc npm t",
-    "dev": "NODE_CONFIG_DIR=./test/config nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "lint": "eslint src test",
     "start": "node src/index.js",
     "test": "mocha --recursive --exit 'test/tests/**/*.test.js'"

@@ -1,16 +1,41 @@
 version: '3'
 services:
-  nsk-koa:
+  api:
+    build:
+      context: .
+      dockerfile: ./test/Dockerfile
+    command: npm run dev
+    environment:
+      DEBUG: app-container*
+      LOGGER_HTTP_ENABLED_REQ: "true"
+      LOGGER_HTTP_ENABLED_RES: "true"
+      LOGGER_HTTP_LEVEL: debug
+      LOGGER_REPO_ENABLED: "true"
+      NODE_ENV: dev
+    ports:
+      - 9002:9002
+    volumes:
+      - ./coverage:/home/app/coverage
+      - ./src:/home/app/src
+      - ./test:/home/app/test
+      - ./package.json:/home/app/package.json
+      - /home/app/node_modules
+
+  coverage:
     build:
       context: .
       dockerfile: ./test/Dockerfile
     command: npm run coverage
     environment:
       DEBUG: app-container*
+      LOGGER_HTTP_ENABLED_REQ: "true"
+      LOGGER_HTTP_ENABLED_RES: "true"
+      LOGGER_HTTP_LEVEL: debug
+      LOGGER_REPO_ENABLED: "true"
       NODE_CONFIG_DIR: /home/app/test/config
       NODE_ENV: test
     ports:
-      - 9002:9002
+      - 9004:9004
     volumes:
       - ./coverage:/home/app/coverage
       - ./src:/home/app/src

@@ -1,0 +1,34 @@
+{
+  "api": {
+    "baseURL": "API_BASE_URL",
+    "namespace": "nsk-koa",
+    "port": "API_PORT",
+    "version": 1
+  },
+  "logger": {
+    "app": {
+      "enabled": "LOGGER_APP_ENABLED",
+      "level": "LOGGER_APP_LEVEL"
+    },
+    "http": {
+      "enabled": {
+        "request": "LOGGER_HTTP_ENABLED_REQ",
+        "response": "LOGGER_HTTP_ENABLED_RES"
+      },
+      "level": "LOGGER_HTTP_LEVEL"
+    },
+    "repo": {
+      "enabled": "LOGGER_REPO_ENABLED",
+      "level": "LOGGER_REPO_LEVEL"
+    },
+    "validation": {
+      "enabled": "LOGGER_VALIDATION_ENABLED",
+      "level": "LOGGER_VALIDATION_LEVEL"
+    }
+  },
+  "service": {
+    "baseURL": "SERVICE_ENDPOINT",
+    "headers": "SERVICE_HEADERS",
+    "timeout": "SERVICE_TIMEOUT"
+  }
+}

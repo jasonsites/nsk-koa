@@ -6,7 +6,7 @@
       "defaultLimit": 20,
       "defaultOffset": 0
     },
-    "port": 9004,
+    "port": 9002,
     "sorting": {
       "defaultOrder": "desc",
       "defaultProp": "created_on"

@@ -8,10 +8,19 @@ $ git clone git@github.com:jasonsites/nsk-koa.git
 $ cd nsk-koa && npm i
 ```
 
-## Testing
-**Run full test suite with code coverage** *(requires [Docker Desktop](https://www.docker.com/products/docker-desktop))*
+## Development
+**Prerequisites**
+
+*[Docker Desktop](https://www.docker.com/products/docker-desktop)*
+
+**Run the app in development mode**
 ```shell
-$ docker-compose run --service-ports nsk-koa
+$ docker-compose run --service-ports api
+```
+
+**Run full test suite with code coverage**
+```shell
+$ docker-compose run --service-ports coverage
 ```
 
 ## License
