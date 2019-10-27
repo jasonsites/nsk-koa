@@ -11,7 +11,7 @@ $ cd nsk-koa && npm i
 ## Testing
 **Run full test suite with code coverage** *(requires [Docker Desktop](https://www.docker.com/products/docker-desktop))*
 ```shell
-$ docker-compose run nsk-koa
+$ docker-compose run --service-ports nsk-koa
 ```
 
 ## License
