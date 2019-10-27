@@ -6,9 +6,7 @@
 const config = require('config')
 const joi = require('@hapi/joi')
 
-const schemas = require('./schemas')
-
-module.exports = function createValidator({ core, logger }) {
+module.exports = function createValidator({ core, logger, schemas }) {
   const { ValidationError } = core
 
   const { enabled, label, level } = config.get('logger.validation')
@@ -51,7 +49,7 @@ module.exports = function createValidator({ core, logger }) {
     const options = { abortEarly: false }
     const { error } = schema.validate(body, options)
 
-    const errors = error !== null
+    const errors = error
       ? formatBasicValidationErrors({ error })
       : { details: [], messages: [] }
     throwOnInvalid({ errors })
@@ -77,8 +75,10 @@ module.exports = function createValidator({ core, logger }) {
 }
 
 module.exports.inject = {
+  name: 'validation',
   require: {
     core: 'core',
     logger: 'logger',
+    schemas: 'http/validation/schemas/index',
   },
 }
