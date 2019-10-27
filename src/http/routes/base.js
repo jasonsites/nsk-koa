@@ -3,6 +3,7 @@
  * @overview root (`/`) router
  */
 
+const config = require('config')
 const Router = require('koa-router')
 
 module.exports = function createRouter() {
@@ -11,7 +12,9 @@ module.exports = function createRouter() {
     ctx.status = 200
   }
 
-  const router = new Router()
+  const { namespace } = config.get('api')
+  const router = new Router({ prefix: `/${namespace}` })
+
   router.get('/', get)
 
   return router

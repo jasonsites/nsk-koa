@@ -3,10 +3,11 @@
  * @overview controller for domain routes
  */
 
-module.exports = function domainController({ domain, serializers, validation }) {
+module.exports = function controller({ domain, serializers, validation }) {
   async function create(ctx) {
     const { body, method } = ctx.request
-    validation.validate({ body, method })
+    const { type } = ctx.state
+    validation.validateBody({ body, method, type })
     const data = await domain.create({ data: body })
     ctx.body = serializers.domain.buildDomain({ data })
     ctx.status = 200
@@ -27,17 +28,13 @@ module.exports = function domainController({ domain, serializers, validation }) 
     ctx.type = 'application/json'
   }
 
-  /**
-   * NOTE: the id for PATCH requests exists in both the path (params) and
-   * the request body. The shape of the body is validated,
-   * but the path id is the only one used for updating the resource
-   */
   async function update(ctx) {
-    // const { id } = ctx.params
+    const { id } = ctx.params
     const { body, method } = ctx.request
-    validation.validate({ body, method })
+    const { type } = ctx.state
+    validation.validateBody({ body, id, method, type })
     await domain.update({ data: body })
-    ctx.status = 204
+    ctx.status = 200
   }
 
   return { create, destroy, detail, update }
@@ -47,8 +44,8 @@ module.exports.inject = {
   require: {
     domain: 'domain',
     serializers: {
-      domain: 'serializers/domain',
+      domain: 'http/serializers/domain',
     },
-    validation: 'validation',
+    validation: 'http/validation/index',
   },
 }
