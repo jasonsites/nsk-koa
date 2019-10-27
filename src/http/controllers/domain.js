@@ -5,11 +5,11 @@
 
 module.exports = function controller({ domain, serializers, utils, validation }) {
   async function create(ctx) {
-    const { type } = ctx.state
+    const { correlation, type } = ctx.state
     const { body, method } = ctx.request
-    validation.validateBody({ body, method, type })
+    validation(correlation).validateBody({ body, method, type })
     const { data: { properties } } = body
-    const result = await domain.create({ data: properties, type })
+    const result = await domain(correlation).create({ data: properties, type })
     const doc = serializers.serialize({ input: result, single: true })
     ctx.body = doc
     ctx.status = 200
@@ -17,16 +17,16 @@ module.exports = function controller({ domain, serializers, utils, validation })
   }
 
   async function destroy(ctx) {
-    const { type } = ctx.state
+    const { correlation, type } = ctx.state
     const { id } = ctx.params
-    await domain.destroy({ id, type })
+    await domain(correlation).destroy({ id, type })
     ctx.status = 204
   }
 
   async function detail(ctx) {
-    const { type } = ctx.state
+    const { correlation, type } = ctx.state
     const { id } = ctx.params
-    const result = await domain.detail({ id, type })
+    const result = await domain(correlation).detail({ id, type })
     const doc = serializers.serialize({ input: result, single: true })
     ctx.body = doc
     ctx.status = 200
@@ -34,12 +34,12 @@ module.exports = function controller({ domain, serializers, utils, validation })
   }
 
   async function list(ctx) {
-    const { type } = ctx.state
+    const { correlation, type } = ctx.state
     const { querystring } = ctx.request
     const query = utils.parseQuery(querystring)
-    validation.validateQuery({ query, type })
+    validation(correlation).validateQuery({ query, type })
     const { filters, page, sort } = utils.transformQuery(query)
-    const result = await domain.list({ filters, page, sort, type })
+    const result = await domain(correlation).list({ filters, page, sort, type })
     const doc = serializers.serialize({ input: result, single: false })
     ctx.body = doc
     ctx.status = 200
@@ -47,12 +47,12 @@ module.exports = function controller({ domain, serializers, utils, validation })
   }
 
   async function update(ctx) {
-    const { type } = ctx.state
+    const { correlation, type } = ctx.state
     const { id } = ctx.params
     const { body, method } = ctx.request
-    validation.validateBody({ body, id, method, type })
+    validation(correlation).validateBody({ body, id, method, type })
     const { data: { properties } } = body
-    const result = await domain.update({ data: properties, id, type })
+    const result = await domain(correlation).update({ data: properties, id, type })
     const doc = serializers.serialize({ input: result, single: true })
     ctx.body = doc
     ctx.status = 200

@@ -27,12 +27,12 @@
       "level": "info"
     },
     "repo": {
-      "enabled": "false",
+      "enabled": "true",
       "label": "repository",
       "level": "info"
     },
     "validation": {
-      "enabled": "false",
+      "enabled": "true",
       "label": "validation",
       "level": "info"
     }

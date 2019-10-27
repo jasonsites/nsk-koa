@@ -15,7 +15,7 @@ module.exports = function schemas({ body, core }) {
    */
   function bodySchema({ method, type }) {
     switch (type) {
-      case Entity.DomainEntity: return domain({ core, method })
+      case Entity.DomainEntity: return domain({ method })
       default: throw new Error(`invalid schema type '${type}'`)
     }
   }
