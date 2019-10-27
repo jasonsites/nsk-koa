@@ -1,20 +1,15 @@
-FROM node:10
-
-RUN useradd --user-group --create-home --shell /bin/false app
+FROM node:12
 
 ENV APP=/home/app
 WORKDIR $APP
 
-COPY package.json package-lock.json $APP/
-RUN chown -R app:app $APP/*
-USER app
-RUN npm install
-USER root
-COPY . $APP
-RUN chown -R app:app $APP/*
-USER app
+RUN mkdir -p $APP/node_modules && chown -R node:node $APP
+COPY package*.json $APP/
+USER node
+RUN npm config set depth=0 && npm install
+COPY --chown=node:node . $APP
 RUN npm run lint
 
 EXPOSE 9002
 
-CMD npm run coverage
+CMD ["npm", "run", "coverage"]

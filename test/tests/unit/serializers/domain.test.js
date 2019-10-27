@@ -9,7 +9,7 @@ const {
 describe('[unit] serializers.domain', function () {
   before('load modules', async function () {
     this.timeout(30000)
-    await loadModules.call(this, { serializers: { domain: 'serializers/domain' } })
+    await loadModules.call(this, { serializers: { domain: 'http/serializers/domain' } })
   })
 
   it('should `buildDomain`', function () {

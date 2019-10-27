@@ -7,13 +7,13 @@ const { notImplemented, methodNotAllowed } = require('boom')
 const koaBody = require('koa-body')
 const compress = require('koa-compress')
 
-module.exports = function createRouter({ logger, middleware, routes }) {
+module.exports = function createRouter({ middleware, routes }) {
   function configureMiddleware(app) {
     app.use(middleware.errorHandler)
-    app.use(middleware.responseTime())
+    app.use(middleware.responseTime)
     app.use(koaBody({ includeUnparsed: true }))
-    app.use(middleware.responseLogger())
-    app.use(middleware.requestLogger({ logger }))
+    app.use(middleware.requestLogger)
+    app.use(middleware.responseLogger)
     app.use(compress())
   }
 
@@ -32,7 +32,6 @@ module.exports = function createRouter({ logger, middleware, routes }) {
 
 module.exports.inject = {
   require: {
-    logger: 'logger',
     middleware: {
       errorHandler: 'http/middleware/error-handler',
       requestLogger: 'http/middleware/request-logger',

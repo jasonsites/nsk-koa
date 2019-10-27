@@ -1,32 +1,31 @@
 {
   "api": {
     "baseURL": "http://127.0.0.1",
-    "port": 9002
+    "namespace": "nsk-koa",
+    "port": 9002,
+    "version": 1
   },
   "logger": {
     "app": {
-      "active": true,
-      "debug": false,
+      "enabled": "true",
       "level": "info"
     },
-    "request": {
-      "active": true,
-      "debug": true,
-      "level": "info"
+    "http": {
+      "enabled": {
+        "request": "true",
+        "response": "true"
+      },
+      "label": "http",
+      "level": "debug"
     },
     "repo": {
-      "active": false,
-      "debug": false,
-      "level": "info"
-    },
-    "response": {
-      "active": false,
-      "debug": false,
+      "enabled": "false",
+      "label": "repository",
       "level": "info"
     },
     "validation": {
-      "active": false,
-      "debug": false,
+      "enabled": "false",
+      "label": "validation",
       "level": "info"
     }
   },

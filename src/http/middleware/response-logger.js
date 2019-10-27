@@ -5,19 +5,18 @@
 
 const config = require('config')
 
-module.exports = function createMiddleware() {
+module.exports = function middleware() {
   return async function responseLogger(ctx, next) {
     await next()
-    const { active, debug } = config.get('logger.response')
+    const { enabled, level } = config.get('logger.http')
     const { log, response } = ctx
-    if (active) log.info(serializeResponse({ debug, response }))
-  }
-
-  function serializeResponse({ debug = false, response }) {
-    const { body, header, message, status } = response
-    if (debug) return { status, message, header, body }
-    return { status, message, header }
+    if (enabled.response === 'true') {
+      const { body, header, message, status } = response
+      const base = { status, message, header }
+      if (level === 'debug') log.debug({ ...base, body })
+      else log.info(base)
+    }
   }
 }
 
-module.exports.inject = { type: 'object' }
+module.exports.inject = {}

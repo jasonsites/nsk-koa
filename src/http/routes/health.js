@@ -3,6 +3,7 @@
  * @overview healthcheck router
  */
 
+const config = require('config')
 const Router = require('koa-router')
 
 module.exports = function createRouter() {
@@ -11,7 +12,9 @@ module.exports = function createRouter() {
     ctx.status = 200
   }
 
-  const router = new Router({ prefix: '/health' })
+  const { namespace } = config.get('api')
+  const router = new Router({ prefix: `/${namespace}/health` })
+
   router.get('/', get)
 
   return router

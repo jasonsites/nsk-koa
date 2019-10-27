@@ -1,0 +1,9 @@
+{
+  "check-coverage": true,
+  "lines": 0,
+  "reporter": [
+    "lcov",
+    "text-summary"
+  ],
+  "temp-directory": "./coverage/.nyc_output"
+}

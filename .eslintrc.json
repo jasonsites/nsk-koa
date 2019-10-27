@@ -11,7 +11,7 @@
   ],
   "globals": {},
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "plugins": [],
@@ -24,6 +24,7 @@
     "import/no-extraneous-dependencies": [2, {
       "devDependencies": [ "**/test/**/*.js" ]
     }],
+    "max-classes-per-file": 0,
     "newline-per-chained-call": 0,
     "no-console": 0,
     "no-underscore-dangle": 0,

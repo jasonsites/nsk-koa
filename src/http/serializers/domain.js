@@ -3,7 +3,7 @@
  * @overview domain serializer
  */
 
-module.exports = function domainSerializer() {
+module.exports = function serializer() {
   function buildDomain({ data }) {
     return data
   }
