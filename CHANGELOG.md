@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/jasonsites/nsk-koa/compare/v0.4.1...v0.4.2) (2019-10-27)
+
+
+### Bug Fixes
+
+* **logger:** propagates correlation object throughout app layers so `req_id` can logged in every module ([c3fa8c9](https://github.com/jasonsites/nsk-koa/commit/c3fa8c946f75ba883ab93fab13cd75b23b38bfe8))
+
 ### [0.4.1](https://github.com/jasonsites/nsk-koa/compare/v0.4.0...v0.4.1) (2019-10-27)
 
 
