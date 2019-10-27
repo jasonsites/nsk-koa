@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/jasonsites/nsk-koa/compare/v0.4.0...v0.4.1) (2019-10-27)
+
+
+### Features
+
+* **config:** adds primary configuration and env var overrides ([f9be494](https://github.com/jasonsites/nsk-koa/commit/f9be494fa604fc0279c828070f0e9dfa65cd8081))
+* adds http serializers ([d04e4ef](https://github.com/jasonsites/nsk-koa/commit/d04e4ef2e47b0278235e93fcf37e546929decee2))
+* **core:** adds `core` module to host centralized domain and error types ([97b370b](https://github.com/jasonsites/nsk-koa/commit/97b370bebe46638b1658cb74fc247d99fdb26311))
+* **http:** adds querystring handling ([49df540](https://github.com/jasonsites/nsk-koa/commit/49df5405bd02a81b1c7c7cccc1c01c5fb6ceef28))
+* **repo:** adds generic db query and models framework ([3df68b7](https://github.com/jasonsites/nsk-koa/commit/3df68b7be73f88464319fed39886a508876d721b))
+
+
+### Bug Fixes
+
+* **config:** updates Dockerfile and configuration patterns ([7af6d7e](https://github.com/jasonsites/nsk-koa/commit/7af6d7e9e33a1f59f16b6a8fe787cdc18ca618c9))
+* **http:** moves `serializers` and `validation` to http package and updates middleware handling ([93eb352](https://github.com/jasonsites/nsk-koa/commit/93eb352c2f667746308b1cbd87ab0de0d9abd05d))
+* **security:** updates dependencies ([32ca7fd](https://github.com/jasonsites/nsk-koa/commit/32ca7fdeda0571e14f216088dc06fd0c630ddd9c))
+* **validation:** adds schemas and updates validation to match joi@v16 api ([b4a275e](https://github.com/jasonsites/nsk-koa/commit/b4a275e7a8a00b298ce59284d0f1abade7872642))
+
 ## [0.4.0](https://github.com/jasonsites/nsk-koa/compare/v0.3.3...v0.4.0) (2019-07-19)
 
 
