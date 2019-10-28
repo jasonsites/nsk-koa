@@ -9,11 +9,11 @@ const compress = require('koa-compress')
 
 module.exports = function createRouter({ middleware, routes }) {
   function configureMiddleware(app) {
-    app.use(middleware.errorHandler)
+    app.use(middleware.responseLogger)
     app.use(middleware.responseTime)
+    app.use(middleware.errorHandler)
     app.use(koaBody({ includeUnparsed: true }))
     app.use(middleware.requestLogger)
-    app.use(middleware.responseLogger)
     app.use(compress())
   }
 
