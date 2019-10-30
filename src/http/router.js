@@ -6,15 +6,17 @@
 const { notImplemented, methodNotAllowed } = require('boom')
 const koaBody = require('koa-body')
 const compress = require('koa-compress')
+const helmet = require('koa-helmet')
 
 module.exports = function createRouter({ middleware, routes }) {
   function configureMiddleware(app) {
     app.use(middleware.responseLogger)
     app.use(middleware.responseTime)
+    app.use(helmet())
+    app.use(compress())
     app.use(middleware.errorHandler)
     app.use(koaBody({ includeUnparsed: true }))
     app.use(middleware.requestLogger)
-    app.use(compress())
   }
 
   function registerRoutes(app) {
