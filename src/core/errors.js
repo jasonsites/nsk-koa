@@ -6,6 +6,7 @@
 module.exports = function errors() {
   const ErrorType = {
     Forbidden: 'ForbiddenError',
+    InternalServer: 'InternalServerError',
     NotFound: 'NotFoundError',
     Unauthorized: 'UnauthorizedError',
     Validation: 'ValidationError',
