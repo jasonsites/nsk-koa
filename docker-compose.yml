@@ -7,8 +7,8 @@ services:
     command: npm run dev
     environment:
       DEBUG: app-container*
-      LOGGER_HTTP_ENABLED_REQ: "true"
-      LOGGER_HTTP_ENABLED_RES: "true"
+      LOGGER_HTTP_ENABLED_REQUEST: "true"
+      LOGGER_HTTP_ENABLED_RESPONSE: "true"
       LOGGER_HTTP_LEVEL: debug
       LOGGER_REPO_ENABLED: "true"
       NODE_ENV: dev
@@ -28,10 +28,10 @@ services:
     command: npm run coverage
     environment:
       DEBUG: app-container*
-      LOGGER_HTTP_ENABLED_REQ: "true"
-      LOGGER_HTTP_ENABLED_RES: "true"
+      LOGGER_HTTP_ENABLED_REQUEST: "true"
+      LOGGER_HTTP_ENABLED_RESPONSE: "true"
       LOGGER_HTTP_LEVEL: debug
-      LOGGER_REPO_ENABLED: "true"
+      LOGGER_REPO_ENABLED: "false"
       NODE_CONFIG_DIR: /home/app/test/config
       NODE_ENV: test
     ports:

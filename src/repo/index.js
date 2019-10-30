@@ -6,9 +6,11 @@
 const config = require('config')
 
 module.exports = function repository({ db, logger }) {
-  return ({ req_id }) => {
-    const { enabled, label, level } = config.get('logger.repo')
-    const log = logger.child({ level, module: label, req_id })
+  const { enabled, label, level } = config.get('logger.repo')
+
+  return (correlation) => {
+    const { req_id } = correlation
+    const log = logger.child({ module: label, req_id, level })
     log.enabled = enabled
 
     async function create({ data, type }) {

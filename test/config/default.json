@@ -1,7 +1,7 @@
 {
   "api": {
     "baseURL": "http://127.0.0.1",
-    "namespace": "nsk-koa",
+    "namespace": "domain",
     "paging": {
       "defaultLimit": 20,
       "defaultOffset": 0
