@@ -1,7 +1,6 @@
 {
   "api": {
     "baseURL": "API_BASE_URL",
-    "namespace": "nsk-koa",
     "port": "API_PORT",
     "version": 1
   },
@@ -12,8 +11,8 @@
     },
     "http": {
       "enabled": {
-        "request": "LOGGER_HTTP_ENABLED_REQ",
-        "response": "LOGGER_HTTP_ENABLED_RES"
+        "request": "LOGGER_HTTP_ENABLED_REQUEST",
+        "response": "LOGGER_HTTP_ENABLED_RESPONSE"
       },
       "level": "LOGGER_HTTP_LEVEL"
     },
