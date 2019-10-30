@@ -4,14 +4,15 @@
  */
 
 const config = require('config')
-const joi = require('@hapi/joi')
 
 module.exports = function validation({ core, logger, schemas }) {
   const { ValidationError } = core
 
-  return ({ req_id }) => {
-    const { enabled, label, level } = config.get('logger.validation')
-    const log = logger.child({ level, module: label, req_id })
+  const { enabled, label, level } = config.get('logger.validation')
+
+  return (correlation) => {
+    const { req_id } = correlation
+    const log = logger.child({ module: label, req_id, level })
     log.enabled = enabled
 
     function composeValidationError({ details, messages }) {
@@ -58,11 +59,11 @@ module.exports = function validation({ core, logger, schemas }) {
     }
 
     function validateQuery({ query, type }) {
-      const schema = schemas.querySchema({ core, type })
+      const schema = schemas.querySchema({ type })
       const options = { abortEarly: false }
-      const { error } = joi.validate(query, schema, options)
+      const { error } = schema.validate(query, options)
 
-      const errors = error !== null
+      const errors = error
         ? formatBasicValidationErrors({ error })
         : { details: [], messages: [] }
       throwOnInvalid({ errors })
