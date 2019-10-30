@@ -18,9 +18,11 @@ describe('[integration] /{namespace}/health', function () {
   })
 
   describe('success states', function () {
-    it('succeeds (200) with healthy status', function () {
+    it('succeeds (200) with healthy status', async function () {
+      const { namespace } = this
+
       return Bluebird.try(() => this.request
-        .get(`/${this.namespace}/health`)
+        .get(`/${namespace}/health`)
         .expect(200)
         .then(({ body: actual }) => {
           assertions.common.assertHealth({ actual })
