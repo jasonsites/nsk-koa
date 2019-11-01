@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/jasonsites/nsk-koa/compare/v0.4.2...v0.4.3) (2019-11-01)
+
+
+### Features
+
+* **core:** adds `InternalServer` error type ([f87ef18](https://github.com/jasonsites/nsk-koa/commit/f87ef18c5ea2bde35e40b29eee3e6c2c50c59478))
+* **http:** adds `helmet` middleware collection for security-related response headers ([d000d31](https://github.com/jasonsites/nsk-koa/commit/d000d3138c41a276d1792867a669ec84ff7d9d44))
+
+
+### Bug Fixes
+
+* **config:** updates configuration for consistency ([19bd670](https://github.com/jasonsites/nsk-koa/commit/19bd670c88556fddfff01f707ca1cb12df38e55e))
+* **http:** refactors controller utils ([3b0dd6f](https://github.com/jasonsites/nsk-koa/commit/3b0dd6fdddc98fd2a5ec1ca509f0627a6ba214c9))
+* **http:** reorders middleware ([b158ee5](https://github.com/jasonsites/nsk-koa/commit/b158ee50e3e1f954c7893f67a10493f0303a30fc))
+
 ### [0.4.2](https://github.com/jasonsites/nsk-koa/compare/v0.4.1...v0.4.2) (2019-10-27)
 
 
