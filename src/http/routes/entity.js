@@ -1,16 +1,16 @@
 /**
- * @file http/routes/domain.js
- * @overview domain router
+ * @file http/routes/entity.js
+ * @overview entity router
  */
 
 const config = require('config')
-const Router = require('koa-router')
+const Router = require('@koa/router')
 
 module.exports = function createRouter({ controller, core, middleware }) {
   const { create, destroy, detail, update } = controller
 
   const { namespace } = config.get('api')
-  const router = new Router({ prefix: `/${namespace}/domain` })
+  const router = new Router({ prefix: `/${namespace}/entities` })
   router.use(middleware.localType({ type: core.Entity.DomainEntity }))
 
   router.get('/:id', detail)
