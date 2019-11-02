@@ -1,10 +1,10 @@
 /**
- * @file http/routes/domain.js
- * @overview domain router
+ * @file http/routes/entity.js
+ * @overview entity router
  */
 
 const config = require('config')
-const Router = require('koa-router')
+const Router = require('@koa/router')
 
 module.exports = function createRouter({ controller, core, middleware }) {
   const { create, destroy, detail, update } = controller

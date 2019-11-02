@@ -31,6 +31,7 @@
   "homepage": "https://github.com/jasonsites/nsk-koa#readme",
   "dependencies": {
     "@hapi/joi": "^16.1.7",
+    "@koa/router": "^8.0.2",
     "app-container": "^1.1.2",
     "bluebird": "^3.7.1",
     "boom": "^7.3.0",
@@ -40,7 +41,6 @@
     "koa-body": "^4.1.1",
     "koa-compress": "^3.0.0",
     "koa-helmet": "^5.2.0",
-    "koa-router": "^7.4.0",
     "koa2-swagger-ui": "^2.15.4",
     "lodash": "^4.17.15",
     "qs": "^6.9.0",
