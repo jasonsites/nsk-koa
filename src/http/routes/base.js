@@ -4,7 +4,7 @@
  */
 
 const config = require('config')
-const Router = require('koa-router')
+const Router = require('@koa/router')
 
 module.exports = function createRouter() {
   async function get(ctx) {

@@ -3,8 +3,8 @@ services:
   api:
     build:
       context: .
-      dockerfile: Dockerfile
-    command: npm run start
+      dockerfile: ./test/Dockerfile
+    command: npm run dev
     environment:
       API_PORT: 9002
       DEBUG: app-container*
@@ -16,6 +16,8 @@ services:
     ports:
       - 9002:9002
     volumes:
+      - ./coverage:/home/app/coverage
       - ./src:/home/app/src
+      - ./test:/home/app/test
       - ./package.json:/home/app/package.json
       - /home/app/node_modules

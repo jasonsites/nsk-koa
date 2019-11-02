@@ -11,7 +11,7 @@ const assertions = require('../../assertions')
 const chance = require('../../../fixtures/chance')
 const { bootstrap, loadModules } = require('../../../utils')
 
-describe('[integration] POST /{namespace}/domain', function () {
+describe('[integration] POST /{namespace}/entities', function () {
   before('load modules', async function () {
     this.sandbox = sinon.createSandbox()
     this.timeout(30000)
@@ -33,7 +33,7 @@ describe('[integration] POST /{namespace}/domain', function () {
       const status = 400
 
       return Bluebird.try(() => this.request
-        .post(`/${namespace}/domain`)
+        .post(`/${namespace}/entities`)
         .send(body)
         .expect(status)
         .then(({ body: actual }) => {
@@ -67,7 +67,7 @@ describe('[integration] POST /{namespace}/domain', function () {
       const body = chance.domainEntityBody(core)
 
       return Bluebird.try(() => this.request
-        .post(`/${namespace}/domain`)
+        .post(`/${namespace}/entities`)
         .send(body)
         .expect(200)
         .then(({ body: actual }) => {
