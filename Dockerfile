@@ -6,10 +6,9 @@ WORKDIR $APP
 RUN mkdir -p $APP/node_modules && chown -R node:node $APP
 COPY package*.json $APP/
 USER node
-RUN npm config set depth=0 && npm install
+RUN npm config set depth=0 && npm install --production
 COPY --chown=node:node . $APP
-RUN npm run lint
 
-EXPOSE 9004
+EXPOSE 9002
 
-CMD ["npm", "run", "coverage"]
+CMD ["npm", "run", "start"]
