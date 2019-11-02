@@ -1,21 +1,24 @@
 version: '3.7'
 services:
-  api:
+  coverage:
     build:
       context: .
-      dockerfile: Dockerfile
-    command: npm run start
+      dockerfile: ./test/Dockerfile
+    command: npm run coverage
     environment:
-      API_PORT: 9002
+      API_PORT: 9004
       DEBUG: app-container*
       LOGGER_HTTP_ENABLED_REQUEST: "true"
       LOGGER_HTTP_ENABLED_RESPONSE: "true"
       LOGGER_HTTP_LEVEL: debug
-      LOGGER_REPO_ENABLED: "true"
-      NODE_ENV: dev
+      LOGGER_REPO_ENABLED: "false"
+      NODE_CONFIG_DIR: /home/app/test/config
+      NODE_ENV: test
     ports:
-      - 9002:9002
+      - 9004:9004
     volumes:
+      - ./coverage:/home/app/coverage
       - ./src:/home/app/src
+      - ./test:/home/app/test
       - ./package.json:/home/app/package.json
       - /home/app/node_modules
