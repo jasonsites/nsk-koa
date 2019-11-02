@@ -11,7 +11,7 @@ const assertions = require('../../assertions')
 const chance = require('../../../fixtures/chance')
 const { bootstrap, loadModules } = require('../../../utils')
 
-describe('[integration] POST /{namespace}/domain', function () {
+describe('[integration] POST /{namespace}/entities', function () {
   before('load modules', async function () {
     this.sandbox = sinon.createSandbox()
     this.timeout(30000)
@@ -26,14 +26,14 @@ describe('[integration] POST /{namespace}/domain', function () {
   })
 
   describe('failure states', function () {
-    it('fails (400) with an invalid payload', async function () {
+    it('fails (400) with invalid payload', async function () {
       const { core: { ErrorType }, namespace } = this
 
       const body = { foo: 'bar' }
       const status = 400
 
       return Bluebird.try(() => this.request
-        .post(`/${namespace}/domain`)
+        .post(`/${namespace}/entities`)
         .send(body)
         .expect(status)
         .then(({ body: actual }) => {
@@ -61,13 +61,13 @@ describe('[integration] POST /{namespace}/domain', function () {
   })
 
   describe('success states', function () {
-    it('succeeds (200) with valid domain payload', async function () {
+    it('succeeds (200) with valid `entity` payload', async function () {
       const { core, namespace } = this
 
       const body = chance.domainEntityBody(core)
 
       return Bluebird.try(() => this.request
-        .post(`/${namespace}/domain`)
+        .post(`/${namespace}/entities`)
         .send(body)
         .expect(200)
         .then(({ body: actual }) => {

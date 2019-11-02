@@ -10,7 +10,7 @@ module.exports = function createRouter({ controller, core, middleware }) {
   const { create, destroy, detail, update } = controller
 
   const { namespace } = config.get('api')
-  const router = new Router({ prefix: `/${namespace}/domain` })
+  const router = new Router({ prefix: `/${namespace}/entities` })
   router.use(middleware.localType({ type: core.Entity.DomainEntity }))
 
   router.get('/:id', detail)
