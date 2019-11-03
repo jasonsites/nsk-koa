@@ -5,21 +5,20 @@
 
 const { version } = require('../../../package.json')
 
-module.exports = function spec({ entities }) {
+module.exports = function specification({ entities }) {
   const { schemas, tags, paths } = entities.reduce((memo, entity) => {
-    memo.paths = { ...memo.schemas, ...entity.paths }
-    memo.schemas = { ...memo.schemas, ...entity.schemas }
-    memo.tags = [...memo.tags, ...entity.tags]
+    if (entity.paths) memo.paths = { ...memo.schemas, ...entity.paths }
+    if (entity.schemas) memo.schemas = { ...memo.schemas, ...entity.schemas }
+    if (entity.tags) memo.tags = [...memo.tags, ...entity.tags]
     return memo
   }, { paths: {}, schemas: {}, tags: [] })
 
   const openapi = '3.0.1'
 
   const info = {
-    version,
     title: 'Domain',
     description: 'Domain API',
-    termsOfService: '{url}',
+    version,
     contact: {
       name: 'nsk-koa',
       email: 'email@domain.com',
@@ -29,6 +28,7 @@ module.exports = function spec({ entities }) {
       name: '',
       url: '',
     },
+    termsOfService: '{url}',
   }
 
   const servers = [{

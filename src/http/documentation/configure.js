@@ -9,29 +9,28 @@ const swagger = require('koa2-swagger-ui')
 module.exports = function documentation({ spec }) {
   const { namespace } = config.get('api')
 
-  const base = {
-    title: 'Domain API',
+  const configuration = {
+    hideTopbar: false,
     oauthOptions: {},
     routePrefix: `/${namespace}/documentation`,
-    hideTopbar: false,
     swaggerOptions: {
+      defaultModelRendering: 'example',
+      defaultModelsExpandDepth: -1,
+      docExpansion: 'list',
       spec,
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
-      docExpansion: 'none',
-      jsonEditor: false,
-      defaultModelRendering: 'schema',
-      showRequestHeaders: false,
-      swaggerVersion: '3.0.1',
+      swaggerVersion: '3.0.2',
     },
+    title: 'Domain API',
   }
 
   return function configure(app) {
-    app.use(swagger(base))
+    app.use(swagger(configuration))
   }
 }
 
 module.exports.inject = {
   require: {
-    spec: 'http/documentation/spec',
+    spec: 'http/documentation/specification',
   },
 }

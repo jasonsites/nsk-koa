@@ -3,8 +3,6 @@
  * @overview api documentation schemas
  */
 
-const { merge } = require('lodash')
-
 module.exports = function entity() {
   const DataEntities = {
     type: 'object',
@@ -55,15 +53,29 @@ module.exports = function entity() {
     },
   }
 
-  const EntityWithId = merge(Entity, {
+  const EntityWithId = {
+    type: 'object',
     properties: {
+      type: {
+        type: 'string',
+        description: 'Entity type',
+        example: 'domain_entity',
+      },
       id: {
         $ref: '#/components/schemas/id',
       },
+      properties: {
+        type: 'object',
+        properties: {
+          name: {
+            $ref: '#/components/schemas/name',
+          },
+        },
+      },
     },
-  })
+  }
 
-  const ErrorBase = {
+  const Error = {
     type: 'object',
     properties: {
       status: {
@@ -84,8 +96,14 @@ module.exports = function entity() {
     },
   }
 
-  const ErrorWithSource = merge(ErrorBase, {
+  const ErrorWithSource = {
+    type: 'object',
     properties: {
+      status: {
+        type: 'string',
+        description: 'HTTP status code',
+        example: '400',
+      },
       source: {
         type: 'object',
         properties: {
@@ -96,10 +114,27 @@ module.exports = function entity() {
           },
         },
       },
+      title: {
+        type: 'string',
+        description: 'Error title',
+        example: 'ValidationError',
+      },
+      detail: {
+        type: 'string',
+        description: 'Error message',
+        example: 'Bad Request',
+      },
     },
-  })
+  }
 
   const Errors = {
+    type: 'array',
+    items: {
+      $ref: '#/components/schemas/Error',
+    },
+  }
+
+  const ErrorsWithSource = {
     type: 'array',
     items: {
       $ref: '#/components/schemas/ErrorWithSource',
@@ -112,9 +147,10 @@ module.exports = function entity() {
     DataSingleEntityWithId,
     Entity,
     EntityWithId,
-    ErrorBase,
+    Error,
     ErrorWithSource,
     Errors,
+    ErrorsWithSource,
   }
 }
 

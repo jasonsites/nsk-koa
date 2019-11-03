@@ -4,20 +4,13 @@
  */
 
 module.exports = function documentation({ paths, schemas, tags }) {
-  return {
-    paths,
-    schemas: { ...schemas.common, ...schemas.entity },
-    tags,
-  }
+  return { paths, schemas, tags }
 }
 
 module.exports.inject = {
   require: {
     paths: 'http/documentation/entities/entity/paths',
-    schemas: {
-      common: 'http/documentation/entities/entity/schemas/common',
-      entity: 'http/documentation/entities/entity/schemas/entity',
-    },
+    schemas: 'http/documentation/entities/entity/schemas',
     tags: 'http/documentation/entities/entity/tags',
   },
 }

@@ -1,12 +1,12 @@
 /**
- * @file http/documentation/entity/schemas/common.js
+ * @file http/documentation/entities/common/schemas.js
  * @overview api documentation common schemas
  */
 
 module.exports = function common() {
   const id = {
     type: 'string',
-    description: 'Entity resource uuid',
+    description: 'Resource uuid',
     example: 'fd06abb2-f4a4-4598-a25d-0843b301e99d',
   }
 

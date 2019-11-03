@@ -12,7 +12,6 @@ module.exports = function paths() {
         tags: ['entity'],
         description: 'Create a new entity',
         operationId: 'createEntity', // ??
-        parameters: [],
         requestBody: {
           content: {
             'application/json': {
