@@ -8,7 +8,7 @@ const koaBody = require('koa-body')
 const compress = require('koa-compress')
 const helmet = require('koa-helmet')
 
-module.exports = function createRouter({ middleware, routes }) {
+module.exports = function createRouter({ documentation, middleware, routes }) {
   function configureMiddleware(app) {
     app.use(compress())
     app.use(middleware.responseLogger)
@@ -20,6 +20,7 @@ module.exports = function createRouter({ middleware, routes }) {
   }
 
   function registerRoutes(app) {
+    documentation.configure(app)
     routes.forEach((router) => {
       app.use(router.routes())
       app.use(router.allowedMethods({
@@ -34,6 +35,9 @@ module.exports = function createRouter({ middleware, routes }) {
 
 module.exports.inject = {
   require: {
+    documentation: {
+      configure: 'http/documentation/configure',
+    },
     middleware: {
       errorHandler: 'http/middleware/error-handler',
       requestLogger: 'http/middleware/request-logger',

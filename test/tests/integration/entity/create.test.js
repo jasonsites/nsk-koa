@@ -26,7 +26,7 @@ describe('[integration] POST /{namespace}/entities', function () {
   })
 
   describe('failure states', function () {
-    it('fails (400) with an invalid payload', async function () {
+    it('fails (400) with invalid payload', async function () {
       const { core: { ErrorType }, namespace } = this
 
       const body = { foo: 'bar' }
@@ -61,7 +61,7 @@ describe('[integration] POST /{namespace}/entities', function () {
   })
 
   describe('success states', function () {
-    it('succeeds (200) with valid domain payload', async function () {
+    it('succeeds (200) with valid `entity` payload', async function () {
       const { core, namespace } = this
 
       const body = chance.domainEntityBody(core)
