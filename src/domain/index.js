@@ -5,28 +5,32 @@
  */
 
 module.exports = function domain({ repo }) {
-  return (correlation) => {
-    async function create({ data, requestId, type }) {
-      return repo(correlation).create({ data, requestId, type })
-    }
+  return {
+    context: (correlation) => {
+      const repository = repo.context(correlation)
 
-    async function destroy({ id, requestId, type }) {
-      return repo(correlation).destroy({ id, requestId, type })
-    }
+      async function create({ data, type }) {
+        return repository.create({ data, type })
+      }
 
-    async function detail({ id, requestId, type }) {
-      return repo(correlation).get({ id, requestId, type })
-    }
+      async function destroy({ id, type }) {
+        return repository.destroy({ id, type })
+      }
 
-    async function list({ filters, page, requestId, sort, type }) {
-      return repo(correlation).list({ filters, page, requestId, sort, type })
-    }
+      async function detail({ id, type }) {
+        return repository.get({ id, type })
+      }
 
-    async function update({ data, requestId, type }) {
-      return repo(correlation).update({ data, requestId, type })
-    }
+      async function list({ filters, page, sort, type }) {
+        return repository.list({ filters, page, sort, type })
+      }
 
-    return { create, destroy, detail, list, update }
+      async function update({ data, type }) {
+        return repository.update({ data, type })
+      }
+
+      return { create, destroy, detail, list, update }
+    },
   }
 }
 
