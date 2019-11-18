@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/jasonsites/nsk-koa/compare/v0.4.3...v0.4.4) (2019-11-18)
+
+
+### Features
+
+* adds service pattern with decoupled client for improved testability ([88f968a](https://github.com/jasonsites/nsk-koa/commit/88f968a84aed2e409682e44bfdfa9896c28538cb))
+
+
+### Bug Fixes
+
+* migrates `koa-router` to `@koa/router` ([978a788](https://github.com/jasonsites/nsk-koa/commit/978a788f4c6f8d0361e6e50c4ac9f88e0f83e3ba))
+* **config:** updates docker configuration to split development and test modes ([b120c7f](https://github.com/jasonsites/nsk-koa/commit/b120c7f722cbadbec3b05d9441c9863d3894a144))
+
 ### [0.4.3](https://github.com/jasonsites/nsk-koa/compare/v0.4.2...v0.4.3) (2019-11-01)
 
 
