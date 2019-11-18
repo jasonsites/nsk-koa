@@ -4,7 +4,9 @@
  * NOTE: this module should be renamed to reflect the actual domain
  */
 
-module.exports = function domain({ repo }) {
+module.exports = function domain({ repo, services }) {
+  const { service } = services
+
   return {
     context: (correlation) => {
       const repository = repo.context(correlation)
@@ -17,8 +19,8 @@ module.exports = function domain({ repo }) {
         return repository.destroy({ id, type })
       }
 
-      async function detail({ id, type }) {
-        return repository.get({ id, type })
+      async function detail() {
+        return service.context(correlation).get()
       }
 
       async function list({ filters, page, sort, type }) {
@@ -38,5 +40,8 @@ module.exports.inject = {
   name: 'domain',
   require: {
     repo: 'repo',
+    services: {
+      service: 'services/index',
+    },
   },
 }
