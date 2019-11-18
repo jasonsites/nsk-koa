@@ -1,11 +1,7 @@
-## Table of Contents
+# API Documentation
 
-Entity
-- [Create](./create.md)
-- [Update](./update.md)
-- [Detail](./detail.md)
-- [List](./list.md)
-- [Delete](./delete.md)
+## Table of Contents
+Entity [Create](./create.md) | [Detail](./detail.md) | [List](./list.md) | [Update](./update.md) | [Delete](./delete.md)
 
 ## Entity List
 
@@ -18,11 +14,11 @@ GET /{namespace}/entities
 
 ### Query Parameters
 | Parameter | Description | Usage
-| ---: | --- | --- | --- |
+| ---: | --- | --- |
 | **f.name**<br><small>String</small> | filter entities by name | ```f[name]=example```
-| **p.limit**<br><small>Number</small> | page size (default 20) | ```p[limit]=10```
-| **p.offset**<br><small>Number</small> | page offset (default 0) | ```p[offset]=10```
-| **s.order**<br><small>String</small> | sort direction<br>asc, desc (default)  | ```s[order]=asc```
+| **p.limit**<br><small>Number</small> | page size<br>default: 20 | ```p[limit]=10```
+| **p.offset**<br><small>Number</small> | page offset<br>default: 0 | ```p[offset]=10```
+| **s.order**<br><small>String</small> | sort direction (asc, desc)<br>default: desc | ```s[order]=asc```
 | **s.prop**<br><small>String</small> | sort by property | ```s[prop]=name```
 
 ---

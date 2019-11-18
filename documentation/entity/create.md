@@ -1,14 +1,9 @@
-## Table of Contents
+# API Documentation
 
-Entity
-- [Create](./create.md)
-- [Update](./update.md)
-- [Detail](./detail.md)
-- [List](./list.md)
-- [Delete](./delete.md)
+## Table of Contents
+Entity [Create](./create.md) | [Detail](./detail.md) | [List](./list.md) | [Update](./update.md) | [Delete](./delete.md)
 
 ## Entity Create
-
 Create a new entity.
 
 ### Endpoint
