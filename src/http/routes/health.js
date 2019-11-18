@@ -7,15 +7,15 @@ const config = require('config')
 const Router = require('@koa/router')
 
 module.exports = function createRouter() {
-  async function get(ctx) {
+  const { namespace } = config.get('api')
+  const router = new Router({ prefix: `/${namespace}/health` })
+
+  async function status(ctx) {
     ctx.body = { meta: { status: 'healthy' } }
     ctx.status = 200
   }
 
-  const { namespace } = config.get('api')
-  const router = new Router({ prefix: `/${namespace}/health` })
-
-  router.get('/', get)
+  router.get('/', status)
 
   return router
 }

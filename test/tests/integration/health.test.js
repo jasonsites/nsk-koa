@@ -25,7 +25,7 @@ describe('[integration] /{namespace}/health', function () {
         .get(`/${namespace}/health`)
         .expect(200)
         .then(({ body: actual }) => {
-          assertions.common.assertHealth({ actual })
+          assertions.common.assertHealthCheck({ actual })
         }))
     })
   })
