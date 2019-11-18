@@ -31,6 +31,11 @@
       "label": "repository",
       "level": "info"
     },
+    "service": {
+      "enabled": "true",
+      "label": "service",
+      "level": "info"
+    },
     "validation": {
       "enabled": "false",
       "label": "validation",
@@ -38,8 +43,9 @@
     }
   },
   "service": {
-    "baseURL": "",
-    "headers": {},
-    "timeout": 1000
+    "api": {
+      "baseURL": "http://www.google.com",
+      "timeout": 25000
+    }
   }
 }

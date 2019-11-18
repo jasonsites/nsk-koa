@@ -14,7 +14,11 @@ module.exports = function middleware({ core }) {
       case ErrorType.NotFound: return notFound(error)
       case ErrorType.Unauthorized: return unauthorized(error)
       case ErrorType.Validation: return badRequest(error)
-      default: return boomify(error, { statusCode: 500 })
+      default: {
+        const err = boomify(error, { statusCode: 500 })
+        err.type = ErrorType.InternalServer
+        return err
+      }
     }
   }
 
@@ -27,11 +31,12 @@ module.exports = function middleware({ core }) {
       else console.error(err) // eslint-disable-line
 
       const boomError = boomifyError(err)
-      const { error, message, statusCode } = boomError.output.payload
+      const { details, output, type } = boomError
+      const { message, statusCode } = output.payload
 
-      ctx.body = boomError.type === ErrorType.Validation && Array.isArray(boomError.details)
-        ? { errors: boomError.details }
-        : { errors: [{ status: statusCode, title: error, detail: message }] }
+      ctx.body = type === ErrorType.Validation && Array.isArray(details)
+        ? { errors: details }
+        : { errors: [{ status: statusCode, title: type, detail: message }] }
       ctx.status = statusCode
       ctx.state.error = boomError
     }

@@ -10,11 +10,15 @@ const assertions = require('../../assertions')
 const chance = require('../../../fixtures/chance')
 const { bootstrap, loadModules } = require('../../../utils')
 
-describe('[integration] POST /{namespace}/entities', function () {
+describe('[integration] GET /{namespace}/entities/{id}', function () {
   before('load modules', async function () {
     this.timeout(30000)
     await bootstrap()
-    await loadModules.call(this, { app: 'http/app', core: 'core' })
+    await loadModules.call(this, {
+      api: 'api/index',
+      app: 'http/app',
+      core: 'core',
+    })
     this.namespace = config.get('api.namespace')
     this.request = agent(createServer(this.app.callback()))
     this.sandbox = sinon.createSandbox()
@@ -26,34 +30,28 @@ describe('[integration] POST /{namespace}/entities', function () {
 
   describe('failure states', function () {
     it('fails (400) with invalid payload', async function () {
-      const { core: { ErrorType }, namespace } = this
+      const { core: { ErrorType, ValidationError }, namespace } = this
 
-      const body = { foo: 'bar' }
+      this.sandbox.stub(this.api, 'client').rejects(new ValidationError('validation error'))
+
+      const id = chance.guid()
       const status = 400
 
       return this.request
-        .post(`/${namespace}/entities`)
-        .send(body)
+        .get(`/${namespace}/entities/${id}`)
         .expect(status)
         .then(({ body: actual }) => {
           const expectations = [{
-            detail: '"data" is required',
-            pointer: '/data',
-            status,
-            title: ErrorType.Validation,
-          }, {
-            detail: '"foo" is not allowed',
-            pointer: '/foo',
+            detail: 'validation error',
             status,
             title: ErrorType.Validation,
           }]
           const { length } = expectations
           const errors = () => range(length)
-            .map((idx) => assertions.common.assertErrorWithSource({
+            .map((idx) => assertions.common.assertError({
               ...{ actual: actual.errors[idx] },
               ...expectations[idx],
             }))
-
           assertions.common.assertErrors({ actual, errors, length })
         })
     })
