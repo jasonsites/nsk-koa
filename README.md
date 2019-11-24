@@ -1,7 +1,7 @@
 # nsk-koa
 Node starter kit for Koa API applications
 
-[API Documentation](./documentation/README.md)
+[API Documentation](./documentation/index.md)
 
 ## Installing
 Clone the repo and install dependencies
