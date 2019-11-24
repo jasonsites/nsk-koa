@@ -1,7 +1,10 @@
 # API Documentation
 
 ## Table of Contents
-Entity [Create](./create.md) | [Detail](./detail.md) | [List](./list.md) | [Update](./update.md) | [Delete](./delete.md)
+Route | Endpoints
+| --- | --- |
+Entity | [Detail](../entity/detail.md) : [List](../entity/list.md) : [Create](../entity/create.md) : [Update](../entity/update.md) : [Delete](../entity/delete.md)
+| [Back to Index](../index.md) | [Back to Project](../../README.md)
 
 ## Entity Delete
 
