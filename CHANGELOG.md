@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/jasonsites/nsk-koa/compare/v0.4.4...v0.4.5) (2020-03-24)
+
+
+### Bug Fixes
+
+* **config:** corrects custom configuration file name misspelling (closes [#36](https://github.com/jasonsites/nsk-koa/issues/36)) ([c3a93fe](https://github.com/jasonsites/nsk-koa/commit/c3a93fe583d07c7d19cd149de67aac7d02940eb4))
+* **security:** updates `nyc` and removes `koa2-swagger-ui` ([0398ab0](https://github.com/jasonsites/nsk-koa/commit/0398ab061c1192311099be037ce82bfa297c1084))
+
 ### [0.4.4](https://github.com/jasonsites/nsk-koa/compare/v0.4.3...v0.4.4) (2019-11-18)
 
 
