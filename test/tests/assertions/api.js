@@ -4,13 +4,14 @@ const { expect } = chai
 chai.use(require('chai-uuid'))
 
 module.exports = {
-  assertDomainEntity,
+  assertDomainResource,
 }
 
-function assertDomainEntity({ actual, core, expected }) {
+function assertDomainResource({ actual, expected }) {
   const { type, id, properties } = actual
-  expect(type).to.equal(core.Entity.DomainEntity)
-  expect(id).to.equal(undefined)
+
+  expect(type).to.equal(expected.type)
+  expect(id).to.equal(expected.id)
   expect(properties).to.be.an('object').with.all.keys(['name'])
   expect(properties.name).to.equal(expected.properties.name)
 }

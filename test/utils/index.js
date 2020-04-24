@@ -5,9 +5,7 @@ const container = require('../../src/container')
 module.exports = { bootstrap, loadModules }
 
 async function bootstrap() {
-  console.log('Bootstrapping test environment...')
   // async bootstrap
-  console.log('Bootstrap test environment complete.')
 }
 
 /**

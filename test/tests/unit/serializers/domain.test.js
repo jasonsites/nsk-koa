@@ -11,7 +11,7 @@ describe('[unit] http.serializers.domain', function () {
     await loadModules.call(this, { core: 'core', serializers: 'serializers' })
   })
 
-  it('should serialize a single domain entity', function () {})
+  it('should serialize a single domain resource', function () {})
 
-  it('should serialize a multiple domain entities', function () {})
+  it('should serialize a multiple domain resources', function () {})
 })

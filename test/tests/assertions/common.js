@@ -59,18 +59,18 @@ function assertMetaPaging({ actual, limit = defaultLimit, offset = defaultOffset
   expect(actual.total).to.equal(total)
 }
 
-function assertMulti({ actual, entities, paging }) {
+function assertMulti({ actual, resources, paging }) {
   expect(actual).to.be.an('object').with.all.keys(['data', 'meta'])
   expect(actual.meta).to.be.an('object').with.all.keys(['paging'])
   expect(actual.data).to.be.an('array')
-  entities()
+  resources()
   if (paging) paging()
 }
 
-function assertSingle({ actual, entity }) {
+function assertSingle({ actual, resource }) {
   expect(actual).to.be.an('object').with.all.keys(['data'])
   expect(actual.data).to.be.an('object')
-  entity()
+  resource()
 }
 
 function assertSoftDelete({ actual }) {
