@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.1](https://github.com/jasonsites/nsk-koa/compare/v0.4.5...v1.0.0-beta.1) (2020-04-24)
+
+
+### Features
+
+* refactors repository pattern and app layering to reflect shift from `entity` to `resource` nomenclature ([7e70c44](https://github.com/jasonsites/nsk-koa/commit/7e70c4401d49c4454ff4028e0180a89c0056887a))
+
+
+### Bug Fixes
+
+* **security:** updates dependencies ([7a28d3c](https://github.com/jasonsites/nsk-koa/commit/7a28d3c2b805677d146bff79a258e5eab555549c))
+
 ### [0.4.5](https://github.com/jasonsites/nsk-koa/compare/v0.4.4...v0.4.5) (2020-03-24)
 
 
