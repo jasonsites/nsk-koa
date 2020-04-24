@@ -3,27 +3,27 @@
 ## Table of Contents
 Route | Endpoints
 | --- | --- |
-Entity | [Detail](../entity/detail.md) : [List](../entity/list.md) : [Create](../entity/create.md) : [Update](../entity/update.md) : [Delete](../entity/delete.md)
+Resource | [Detail](../resource/detail.md) : [List](../resource/list.md) : [Create](../resource/create.md) : [Update](../resource/update.md) : [Delete](../resource/delete.md)
 | [Back to Index](../index.md) | [Back to Project](../../README.md)
 
-## Entity Detail
+## Resource Detail
 
-Retrieve a single entity resource by id.
+Retrieve a single resource resource by id.
 
 ### Endpoint
 ```http
-GET /{namespace}/entities/{id}
+GET /{namespace}/resources/{id}
 ```
 
 | Parameter | Description |
 | ---: | --- |
-| **id**<br><small>required</small> | entity id |
+| **id**<br><small>required</small> | resource id |
 
 ---
 
 ### Request
 ```http
-GET /{namespace}/entities/55d4cf2d-016f-43df-af3c-64d751cdb664 HTTP/1.1
+GET /{namespace}/resources/55d4cf2d-016f-43df-af3c-64d751cdb664 HTTP/1.1
 Host: api.domain.com
 ```
 
@@ -34,7 +34,7 @@ HTTP/1.1 200 OK
 ```json
 {
   "data": {
-    "type": "entity",
+    "type": "resource",
     "id": "55d4cf2d-016f-43df-af3c-64d751cdb664",
     "properties": {
       "name": "example name",

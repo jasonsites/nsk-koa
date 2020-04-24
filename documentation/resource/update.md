@@ -3,34 +3,34 @@
 ## Table of Contents
 Route | Endpoints
 | --- | --- |
-Entity | [Detail](../entity/detail.md) : [List](../entity/list.md) : [Create](../entity/create.md) : [Update](../entity/update.md) : [Delete](../entity/delete.md)
+Resource | [Detail](../resource/detail.md) : [List](../resource/list.md) : [Create](../resource/create.md) : [Update](../resource/update.md) : [Delete](../resource/delete.md)
 | [Back to Index](../index.md) | [Back to Project](../../README.md)
 
-## Entity Update
+## Resource Update
 
-Update an entity by id.
+Update an resource by id.
 
 ### Endpoint
 ```http
-PUT /{namespace}/entities/{id}
+PUT /{namespace}/resources/{id}
 ```
 
 | Parameter | Description |
 | ---: | --- |
-| **id**<br><small>required</small> | entity id |
+| **id**<br><small>required</small> | resource id |
 
 ---
 
 ### Request
 ```http
-PUT /{namespace}/entities/b3494d6a-c4ef-4dff-ab89-0645c40f8c8c HTTP/1.1
+PUT /{namespace}/resources/b3494d6a-c4ef-4dff-ab89-0645c40f8c8c HTTP/1.1
 Host: api.domain.com
 Authorization: Bearer {token}
 ```
 ```json
 {
   "data": {
-    "type": "entity",
+    "type": "resource",
     "id": "b3494d6a-c4ef-4dff-ab89-0645c40f8c8c",
     "properties": {
       "name": "updated example name"
@@ -46,7 +46,7 @@ HTTP/1.1 200 OK
 ```json
 {
   "data": {
-    "type": "entity",
+    "type": "resource",
     "id": "b3494d6a-c4ef-4dff-ab89-0645c40f8c8c",
     "properties": {
       "name": "updated example name",
