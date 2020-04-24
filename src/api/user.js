@@ -1,13 +1,13 @@
 /**
- * @file api/index.js
- * @overview example api client
+ * @file api/user.js
+ * @overview example (user) service client
  */
 
 const axios = require('axios')
 const config = require('config')
 
-module.exports = function api() {
-  const options = config.get('service.api')
+module.exports = function service() {
+  const options = config.get('services.user.api')
   const client = axios.create(options)
 
   return { client }

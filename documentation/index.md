@@ -3,5 +3,5 @@
 ## Table of Contents
 Route | Endpoints
 | --- | --- |
-Entity | [Detail](./entity/detail.md) : [List](./entity/list.md) : [Create](./entity/create.md) : [Update](./entity/update.md) : [Delete](./entity/delete.md)
+Resource | [Detail](./resource/detail.md) : [List](./resource/list.md) : [Create](./resource/create.md) : [Update](./resource/update.md) : [Delete](./resource/delete.md)
 | | [Back to Project](../README.md)

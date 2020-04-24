@@ -1,8 +1,7 @@
 {
   "api": {
     "baseURL": "API_BASE_URL",
-    "port": "API_PORT",
-    "version": 1
+    "port": "API_PORT"
   },
   "logger": {
     "app": {
@@ -11,8 +10,8 @@
     },
     "http": {
       "enabled": {
-        "request": "LOGGER_HTTP_ENABLED_REQUEST",
-        "response": "LOGGER_HTTP_ENABLED_RESPONSE"
+        "request": "LOGGER_HTTP_REQUEST_ENABLED",
+        "response": "LOGGER_HTTP_RESPONSE_ENABLED"
       },
       "level": "LOGGER_HTTP_LEVEL"
     },
@@ -20,14 +19,24 @@
       "enabled": "LOGGER_REPO_ENABLED",
       "level": "LOGGER_REPO_LEVEL"
     },
+    "services": {
+      "user": {
+        "enabled": "LOGGER_USER_SERVICE_ENABLED",
+        "level": "LOGGER_USER_SERVICE_LEVEL"
+      }
+    },
     "validation": {
       "enabled": "LOGGER_VALIDATION_ENABLED",
       "level": "LOGGER_VALIDATION_LEVEL"
     }
   },
-  "service": {
-    "baseURL": "SERVICE_ENDPOINT",
-    "headers": "SERVICE_HEADERS",
-    "timeout": "SERVICE_TIMEOUT"
+  "services": {
+    "user": {
+      "api": {
+        "baseURL": "USER_SERVICE_BASE_URL",
+        "headers": "USER_SERVICE_HEADERS",
+        "timeout": "USER_SERVICE_TIMEOUT"
+      }
+    }
   }
 }

@@ -3,29 +3,29 @@
 ## Table of Contents
 Route | Endpoints
 | --- | --- |
-Entity | [Detail](../entity/detail.md) : [List](../entity/list.md) : [Create](../entity/create.md) : [Update](../entity/update.md) : [Delete](../entity/delete.md)
+Resource | [Detail](../resource/detail.md) : [List](../resource/list.md) : [Create](../resource/create.md) : [Update](../resource/update.md) : [Delete](../resource/delete.md)
 | [Back to Index](../index.md) | [Back to Project](../../README.md)
 
-## Entity Create
-Create a new entity.
+## Resource Create
+Create a new resource.
 
 ### Endpoint
 ```http
-POST /{namespace}/entities
+POST /{namespace}/resources
 ```
 
 ---
 
 ### Request
 ```http
-POST /{namespace}/entities HTTP/1.1
+POST /{namespace}/resources HTTP/1.1
 Host: api.domain.com
 Authorization: Bearer {token}
 ```
 ```json
 {
   "data": {
-    "type": "entity",
+    "type": "resource",
     "properties": {
       "name": "example name"
     }
@@ -40,7 +40,7 @@ HTTP/1.1 200 OK
 ```json
 {
   "data": {
-    "type": "entity",
+    "type": "resource",
     "id": "55d4cf2d-016f-43df-af3c-64d751cdb664",
     "properties": {
       "name": "example name",

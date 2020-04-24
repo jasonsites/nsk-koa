@@ -26,6 +26,6 @@ $ docker-compose run --service-ports coverage
 ```
 
 ## License
-Copyright (c) 2019 Jason Sites
+Copyright (c) 2017-2020 Jason Sites
 
 Licensed under the [MIT License](LICENSE.md)

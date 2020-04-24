@@ -9,18 +9,18 @@ module.exports = function domain({ common, core }) {
   const { single } = common
 
   /**
-   * example domain entity schema
+   * example domain resource schema
    */
   function type({ method }) {
     // TODO: possible error handling on undefined `method`
-    const entity = {
-      type: joi.string().valid(core.Entity.DomainEntity).required(),
+    const resource = {
+      type: joi.string().valid(core.Resource.DomainResource).required(),
       properties: joi.object().keys({
         name: joi.string().required(),
       }).required(),
     }
-    if (method === 'PUT') entity.id = joi.string().uuid().required()
-    return entity
+    if (method === 'PUT') resource.id = joi.string().uuid().required()
+    return resource
   }
 
   return single({ type })

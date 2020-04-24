@@ -1,13 +1,13 @@
 /**
- * @file services/index.js
- * @overview example service
+ * @file services/user.js
+ * @overview example (user) service
  */
 
 const Bluebird = require('bluebird')
 const config = require('config')
 
 module.exports = function service({ api, logger }) {
-  const { enabled, label, level } = config.get('logger.service')
+  const { enabled, label, level } = config.get('logger.services.user')
 
   return {
     context: (correlation) => {
@@ -36,7 +36,7 @@ module.exports = function service({ api, logger }) {
 
 module.exports.inject = {
   require: {
-    api: 'api/index',
+    api: 'api/user',
     logger: 'logger',
   },
 }

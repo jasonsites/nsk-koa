@@ -10,11 +10,15 @@ const assertions = require('../../assertions')
 const chance = require('../../../fixtures/chance')
 const { bootstrap, loadModules } = require('../../../utils')
 
-describe('[integration] POST /{namespace}/entities', function () {
+describe('[integration] GET /{namespace}/resources/{id}', function () {
   before('load modules', async function () {
     this.timeout(30000)
     await bootstrap()
-    await loadModules.call(this, { app: 'http/app', core: 'core' })
+    await loadModules.call(this, {
+      api: 'api/user',
+      app: 'http/app',
+      core: 'core',
+    })
     this.namespace = config.get('api.namespace')
     this.request = agent(createServer(this.app.callback()))
     this.sandbox = sinon.createSandbox()
@@ -26,56 +30,50 @@ describe('[integration] POST /{namespace}/entities', function () {
 
   describe('failure states', function () {
     it('fails (400) with invalid payload', async function () {
-      const { core: { ErrorType }, namespace } = this
+      const { core: { ErrorType, ValidationError }, namespace } = this
 
-      const body = { foo: 'bar' }
+      this.sandbox.stub(this.api, 'client').rejects(new ValidationError('validation error'))
+
+      const id = chance.guid()
       const status = 400
 
       return this.request
-        .post(`/${namespace}/entities`)
-        .send(body)
+        .get(`/${namespace}/resources/${id}`)
         .expect(status)
         .then(({ body: actual }) => {
           const expectations = [{
-            detail: '"data" is required',
-            pointer: '/data',
-            status,
-            title: ErrorType.Validation,
-          }, {
-            detail: '"foo" is not allowed',
-            pointer: '/foo',
+            detail: 'validation error',
             status,
             title: ErrorType.Validation,
           }]
           const { length } = expectations
           const errors = () => range(length)
-            .map((idx) => assertions.common.assertErrorWithSource({
+            .map((idx) => assertions.common.assertError({
               ...{ actual: actual.errors[idx] },
               ...expectations[idx],
             }))
-
           assertions.common.assertErrors({ actual, errors, length })
         })
     })
   })
 
   describe('success states', function () {
-    it('succeeds (200) with valid `entity` payload', async function () {
+    it('succeeds (200) with valid payload', async function () {
       const { core, namespace } = this
 
-      const body = chance.domainEntityBody(core)
+      const id = 99
+      const body = chance.domainResourceBody(core, { id, name: 'example' })
+      const status = 200
 
       return this.request
-        .post(`/${namespace}/entities`)
-        .send(body)
-        .expect(200)
+        .get(`/${namespace}/resources/${id}`)
+        .expect(status)
         .then(({ body: actual }) => {
-          const entity = () => assertions.api.assertDomainEntity({
+          const resource = () => assertions.api.assertDomainResource({
             actual: actual.data,
-            core,
             expected: body.data,
           })
-          assertions.common.assertSingle({ actual, entity })
+          assertions.common.assertSingle({ actual, resource })
         })
     })
   })

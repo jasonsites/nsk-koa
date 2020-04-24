@@ -1,6 +1,6 @@
 /**
- * @file http/routes/entity.js
- * @overview entity router
+ * @file http/routes/resource.js
+ * @overview example resource router
  */
 
 const config = require('config')
@@ -10,8 +10,8 @@ module.exports = function createRouter({ controller, core, middleware }) {
   const { create, destroy, detail, update } = controller
 
   const { namespace } = config.get('api')
-  const router = new Router({ prefix: `/${namespace}/entities` })
-  router.use(middleware.localType({ type: core.Entity.DomainEntity }))
+  const router = new Router({ prefix: `/${namespace}/resources` })
+  router.use(middleware.localType({ type: core.Resource.DomainResource }))
 
   router.get('/:id', detail)
   router.post('/', create)

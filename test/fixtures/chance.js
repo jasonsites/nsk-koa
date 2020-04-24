@@ -1,3 +1,3 @@
 module.exports = require('chance').Chance()
 
-require('./builders/api/domain-entity')
+require('./builders/api/domain-resource')
