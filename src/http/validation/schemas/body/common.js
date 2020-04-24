@@ -7,13 +7,13 @@ const joi = require('@hapi/joi')
 
 module.exports = function common({ core }) {
   /**
-   * returns a schema function for a single entity request of `type`
+   * returns a schema function for a single resource request of `type`
    * @param {Function} params.type - schema type function with signature `type({ method })`
    * @return {Function}
    */
   function single({ type }) {
     /**
-     * create joi validation schema for single entity request body
+     * create joi validation schema for single resource request body
      * @param  {String} params.method - http request method (POST, PUT)
      * @return {Object}
      */

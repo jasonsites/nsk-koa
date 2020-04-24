@@ -4,11 +4,11 @@
  */
 
 module.exports = function core({ errors }) {
-  const Entity = {
-    DomainEntity: 'domain_entity',
+  const Resource = {
+    DomainResource: 'domain_resource',
   }
 
-  return { Entity, ...errors }
+  return { ...errors, Resource }
 }
 
 module.exports.inject = {

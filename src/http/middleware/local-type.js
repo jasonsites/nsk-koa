@@ -1,6 +1,6 @@
 /**
  * @file http/middleware/local-type.js
- * @overview sets local entity type
+ * @overview sets local resource type
  */
 
 module.exports = function middleware({ type }) {

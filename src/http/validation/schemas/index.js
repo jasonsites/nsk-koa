@@ -5,17 +5,17 @@
 
 module.exports = function schemas({ body, core }) {
   const { domain } = body
-  const { Entity } = core
+  const { Resource } = core
 
   /**
    * retrieve joi validation schema for POST/PATCH request bodies
    * @param  {String} params.method - http request method
-   * @param  {String} params.type   - entity type
+   * @param  {String} params.type   - resource type
    * @return {Object}
    */
   function bodySchema({ method, type }) {
     switch (type) {
-      case Entity.DomainEntity: return domain({ method })
+      case Resource.DomainResource: return domain({ method })
       default: throw new Error(`invalid schema type '${type}'`)
     }
   }
