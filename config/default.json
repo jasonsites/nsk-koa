@@ -31,10 +31,12 @@
       "label": "repository",
       "level": "info"
     },
-    "service": {
-      "enabled": "true",
-      "label": "service",
-      "level": "info"
+    "services": {
+      "user": {
+        "enabled": "true",
+        "label": "user-service",
+        "level": "info"
+      }
     },
     "validation": {
       "enabled": "false",
@@ -42,10 +44,12 @@
       "level": "info"
     }
   },
-  "service": {
-    "api": {
-      "baseURL": "http://www.google.com",
-      "timeout": 25000
+  "services": {
+    "user": {
+      "api": {
+        "baseURL": "http://www.google.com",
+        "timeout": 25000
+      }
     }
   }
 }
