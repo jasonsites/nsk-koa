@@ -35,7 +35,7 @@
     "@hapi/joi": "^17.1.1",
     "@koa/router": "^8.0.8",
     "app-container": "^1.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bluebird": "^3.7.2",
     "boom": "^7.3.0",
     "bunyan": "^1.8.12",
