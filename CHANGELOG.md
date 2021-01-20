@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/jasonsites/nsk-koa/compare/v1.0.0-beta.1...v1.0.0) (2021-01-20)
+
+
+### Bug Fixes
+
+* **security:** updates configuration and dependencies ([a54db03](https://github.com/jasonsites/nsk-koa/commit/a54db03f165647f7ca801a08e742902be2049847))
+* `create` method returns HTTP 201 (closes [#34](https://github.com/jasonsites/nsk-koa/issues/34)) ([443c333](https://github.com/jasonsites/nsk-koa/commit/443c33396eb067a68db232e77f78d16e075eabc3))
+
 ## [1.0.0-beta.1](https://github.com/jasonsites/nsk-koa/compare/v0.4.5...v1.0.0-beta.1) (2020-04-24)
 
 
