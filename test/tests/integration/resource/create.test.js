@@ -60,20 +60,21 @@ describe('[integration] POST /{namespace}/resources', function () {
   })
 
   describe('success states', function () {
-    it.skip('succeeds (200) with valid payload', async function () {
+    it('succeeds (201) with valid payload', async function () {
       const { core, namespace } = this
 
       const body = chance.domainResourceBody(core)
+      const expected = { id: 1, ...body.data }
 
       return this.request
         .post(`/${namespace}/resources`)
         .send(body)
-        .expect(200)
+        .expect(201)
         .then(({ body: actual }) => {
           const resource = () => assertions.api.assertDomainResource({
             actual: actual.data,
             core,
-            expected: body.data,
+            expected,
           })
           assertions.common.assertSingle({ actual, resource })
         })

@@ -8,8 +8,18 @@
 module.exports = function model({ core }) {
   const { Resource } = core
 
-  return function performanceSummaryUser({ log }) {
+  return function domainResource({ log }) {
     const type = Resource.DomainResource
+
+    async function create({ data }) {
+      return {
+        data: [{
+          type,
+          id: 1,
+          properties: data,
+        }],
+      }
+    }
 
     async function detail({ id }) {
       log.info(id)
@@ -27,7 +37,7 @@ module.exports = function model({ core }) {
       }
     }
 
-    return { detail, type }
+    return { create, detail, type }
   }
 }
 

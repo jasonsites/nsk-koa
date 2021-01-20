@@ -12,7 +12,7 @@ module.exports = function controller({ domain, serializers, utils, validation })
     const result = await domain.context(correlation).create({ data: properties, type })
     const doc = serializers.serialize({ input: result, single: true })
     ctx.body = doc
-    ctx.status = 200
+    ctx.status = 201
     ctx.type = 'application/json'
   }
 
