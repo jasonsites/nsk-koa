@@ -22,10 +22,10 @@ $ docker-compose run --service-ports api
 
 **Run full test suite with code coverage**
 ```shell
-$ docker-compose run --service-ports coverage
+$ docker-compose -f docker-coverage.yml run coverage
 ```
 
 ## License
-Copyright (c) 2017-2020 Jason Sites
+Copyright (c) 2017-2021 Jason Sites
 
 Licensed under the [MIT License](LICENSE.md)
