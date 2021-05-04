@@ -19,6 +19,13 @@ module.exports = function errors() {
     }
   }
 
+  class InternalServerError extends Error {
+    constructor(message) {
+      super(message)
+      this.type = ErrorType.InternalServer
+    }
+  }
+
   class NotFoundError extends Error {
     constructor(message) {
       super(message)
@@ -43,6 +50,7 @@ module.exports = function errors() {
   return {
     ErrorType,
     ForbiddenError,
+    InternalServerError,
     NotFoundError,
     UnauthorizedError,
     ValidationError,

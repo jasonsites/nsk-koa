@@ -4,12 +4,12 @@
 */
 
 module.exports = function index({ core, models }) {
-  const { Resource } = core
+  const { InternalServerError, Resource } = core
 
   function getModel({ log, type }) {
     switch (type) {
       case Resource.DomainResource: return models.domainResource({ log })
-      default: throw new Error(`invalid resource type '${type}'`)
+      default: throw new InternalServerError(`invalid resource type '${type}'`)
     }
   }
 
