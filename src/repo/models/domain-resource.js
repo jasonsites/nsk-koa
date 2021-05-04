@@ -1,9 +1,7 @@
 /**
 * @file repo/models/domain-resource.js
-* @overview domain resource model
+* @overview example domain resource model
 */
-
-// const Bluebird = require('bluebird')
 
 module.exports = function model({ core }) {
   const { Resource } = core

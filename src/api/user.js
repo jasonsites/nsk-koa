@@ -1,6 +1,7 @@
 /**
  * @file api/user.js
  * @overview example (user) service client
+ * NOTE: this module (dir and filename) should be renamed to reflect the actual service client
  */
 
 const axios = require('axios')
