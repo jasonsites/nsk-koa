@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/jasonsites/nsk-koa/compare/v1.0.0...v1.1.0) (2021-05-04)
+
+
+### Features
+
+* adds `core.InternalServerError` class ([9b3eecf](https://github.com/jasonsites/nsk-koa/commit/9b3eecffffdb2d959fffa49d44509eaef4876b25))
+
+
+### Bug Fixes
+
+* moves json serializers from `domain` to `http` module ([8f3f6c2](https://github.com/jasonsites/nsk-koa/commit/8f3f6c2959f954c08ee8e5ed757800dfbbb36ed8))
+
 ## [1.0.0](https://github.com/jasonsites/nsk-koa/compare/v1.0.0-beta.1...v1.0.0) (2021-01-20)
 
 
