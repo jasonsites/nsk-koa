@@ -3,7 +3,7 @@
  * @overview http error handler
  */
 
-const { badRequest, boomify, forbidden, notFound, unauthorized } = require('boom')
+const { badRequest, boomify, forbidden, notFound, unauthorized } = require('@hapi/boom')
 
 module.exports = function middleware({ core }) {
   const { ErrorType } = core

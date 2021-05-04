@@ -3,7 +3,7 @@
  * @overview http middleware and router configuration
  */
 
-const { notImplemented, methodNotAllowed } = require('boom')
+const { notImplemented, methodNotAllowed } = require('@hapi/boom')
 const koaBody = require('koa-body')
 const compress = require('koa-compress')
 const helmet = require('koa-helmet')

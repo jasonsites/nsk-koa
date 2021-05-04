@@ -3,7 +3,7 @@
  * @overview common schemas across types
  */
 
-const joi = require('@hapi/joi')
+const joi = require('joi')
 
 module.exports = function common({ core }) {
   /**

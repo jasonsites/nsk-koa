@@ -3,7 +3,7 @@
  * @overview domain schemas
  */
 
-const joi = require('@hapi/joi')
+const joi = require('joi')
 
 module.exports = function domain({ common, core }) {
   const { single } = common
