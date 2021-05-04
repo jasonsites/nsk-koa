@@ -1,5 +1,5 @@
 /**
- * @file domain/serializers/types.js
+ * @file http/serializers/types.js
  * @overview
  */
 

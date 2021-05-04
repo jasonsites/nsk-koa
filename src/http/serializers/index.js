@@ -98,6 +98,6 @@ module.exports.inject = {
   name: 'serializers',
   require: {
     core: 'core',
-    types: 'domain/serializers/types',
+    types: 'http/serializers/types',
   },
 }
