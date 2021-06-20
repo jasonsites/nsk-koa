@@ -4,7 +4,7 @@
   "description": "Node Starter Kit for Koa API Applications",
   "main": "src/index.js",
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "scripts": {
     "coverage": "nyc npm t",
