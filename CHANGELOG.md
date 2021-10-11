@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/jasonsites/nsk-koa/compare/v1.1.0...v1.1.1) (2021-10-11)
+
+
+### Bug Fixes
+
+* **security:** updates dependencies ([e4d1129](https://github.com/jasonsites/nsk-koa/commit/e4d1129af277e32965cbed294597d40d3b71cfe0))
+
 ## [1.1.0](https://github.com/jasonsites/nsk-koa/compare/v1.0.0...v1.1.0) (2021-05-04)
 
 
