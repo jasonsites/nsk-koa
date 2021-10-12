@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/jasonsites/nsk-koa/compare/v1.1.1...v1.2.0) (2021-10-12)
+
+
+### Features
+
+* **http:** adds correlation middleware to propagate tracing headers ([bf37819](https://github.com/jasonsites/nsk-koa/commit/bf37819a66b34bdb945dac931dc401ff9ac5a536))
+
+
+### Bug Fixes
+
+* updates `eslint-plugin-import` for eslint@8 compatibility ([bc7c766](https://github.com/jasonsites/nsk-koa/commit/bc7c76686e3ae4723e2173944b3d7daec1d068e4))
+
 ### [1.1.1](https://github.com/jasonsites/nsk-koa/compare/v1.1.0...v1.1.1) (2021-10-11)
 
 
