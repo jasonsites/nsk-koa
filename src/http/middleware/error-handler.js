@@ -8,20 +8,6 @@ const { badRequest, boomify, forbidden, notFound, unauthorized } = require('@hap
 module.exports = function middleware({ core }) {
   const { ErrorType } = core
 
-  function boomifyError(error) {
-    switch (error.type) {
-      case ErrorType.Forbidden: return forbidden(error)
-      case ErrorType.NotFound: return notFound(error)
-      case ErrorType.Unauthorized: return unauthorized(error)
-      case ErrorType.Validation: return badRequest(error)
-      default: {
-        const err = boomify(error, { statusCode: 500 })
-        err.type = ErrorType.InternalServer
-        return err
-      }
-    }
-  }
-
   return async function errorHandler(ctx, next) {
     try {
       await next()
@@ -39,6 +25,20 @@ module.exports = function middleware({ core }) {
         : { errors: [{ status: statusCode, title: type, detail: message }] }
       ctx.status = statusCode
       ctx.state.error = boomError
+    }
+  }
+
+  function boomifyError(error) {
+    switch (error.type) {
+      case ErrorType.Forbidden: return forbidden(error)
+      case ErrorType.NotFound: return notFound(error)
+      case ErrorType.Unauthorized: return unauthorized(error)
+      case ErrorType.Validation: return badRequest(error)
+      default: {
+        const err = boomify(error, { statusCode: 500 })
+        err.type = ErrorType.InternalServer
+        return err
+      }
     }
   }
 }

@@ -16,6 +16,7 @@ module.exports = function createRouter({ middleware, routes }) {
     app.use(helmet())
     app.use(middleware.errorHandler)
     app.use(koaBody({ includeUnparsed: true }))
+    app.use(middleware.correlation)
     app.use(middleware.requestLogger)
   }
 
@@ -35,6 +36,7 @@ module.exports = function createRouter({ middleware, routes }) {
 module.exports.inject = {
   require: {
     middleware: {
+      correlation: 'http/middleware/correlation',
       errorHandler: 'http/middleware/error-handler',
       requestLogger: 'http/middleware/request-logger',
       responseLogger: 'http/middleware/response-logger',

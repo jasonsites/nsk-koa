@@ -3,7 +3,6 @@
  * @overview example (user) service
  */
 
-const Bluebird = require('bluebird')
 const config = require('config')
 
 module.exports = function service({ api, logger }) {
@@ -11,22 +10,19 @@ module.exports = function service({ api, logger }) {
 
   return {
     context: (correlation) => {
-      const { req_id } = correlation
+      const { headers, req_id } = correlation
       const log = logger.child({ module: label, req_id, level })
 
       async function get() {
-        return Bluebird.try(() => api.client({
-          url: '/',
-          method: 'get',
-        }))
-          .then((res) => {
-            if (enabled) log.info(res.data)
-            return res.data
-          })
-          .catch((err) => {
-            log.error(err)
-            throw err
-          })
+        try {
+          const response = await api.client({ url: '/', method: 'get', headers })
+          const { data } = response
+          if (enabled) log.info(data)
+          return data
+        } catch (err) {
+          log.error(err)
+          throw err
+        }
       }
 
       return { get }
