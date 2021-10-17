@@ -3,28 +3,22 @@
  * @overview composes correlation object from tracing headers
  */
 
-const uuid = require('uuid')
+const config = require('config')
 
 module.exports = function middleware() {
+  const tracing = config.get('api.tracing')
+
   return async function correlation(ctx, next) {
     const headers = getTracingHeaders(ctx.request)
-    const req_id = headers['x-request-id'] || uuid.v4()
+    const req_id = headers['x-request-id']
     ctx.state = { correlation: { headers, req_id } }
-    ctx.response.set('x-request-id', req_id) // omit in service mesh scenario
+    ctx.response.set('X-Request-ID', req_id)
     return next()
   }
 
   // https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
   function getTracingHeaders(request) {
-    const headers = [
-      'x-request-id',
-      'x-b3-traceid',
-      'x-b3-spanid',
-      'x-b3-parentspanid',
-      'x-b3-sampled',
-      'x-b3-flags',
-      'x-ot-span-context',
-    ]
+    const { headers } = tracing
 
     return headers.reduce((memo, h) => {
       memo[h] = request.get(h)
