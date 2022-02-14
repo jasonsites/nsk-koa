@@ -26,6 +26,6 @@ $ docker compose -f docker-coverage.yml run --rm coverage
 ```
 
 ## License
-Copyright (c) 2017-2021 Jason Sites
+Copyright (c) 2017-2022 Jason Sites
 
 Licensed under the [MIT License](LICENSE.md)
