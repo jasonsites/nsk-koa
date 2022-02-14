@@ -4,7 +4,7 @@
   "description": "Node Starter Kit for Koa API Applications",
   "main": "src/index.js",
   "engines": {
-    "node": "14.x"
+    "node": ">=14.15.0"
   },
   "scripts": {
     "coverage": "nyc npm t",
@@ -35,32 +35,32 @@
     "@hapi/boom": "^9.1.4",
     "@koa/router": "^10.1.1",
     "app-container": "^1.1.2",
-    "axios": "^0.22.0",
+    "axios": "^0.26.0",
     "bunyan": "^1.8.15",
-    "config": "^3.3.6",
-    "joi": "^17.4.2",
-    "koa": "^2.13.3",
+    "config": "^3.3.7",
+    "joi": "^17.6.0",
+    "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-compress": "^5.1.0",
     "koa-helmet": "^6.1.0",
     "lodash": "^4.17.21",
-    "qs": "^6.10.1",
+    "qs": "^6.10.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "bluebird": "^3.7.2",
-    "chai": "^4.3.4",
+    "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "chai-uuid": "^1.0.6",
     "chance": "^1.1.8",
-    "eslint": "^8.0.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.25.1",
-    "mocha": "^9.1.2",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "mocha": "^9.2.0",
     "moment": "^2.29.1",
-    "nodemon": "^2.0.13",
+    "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
-    "sinon": "^11.1.2",
-    "supertest": "^6.1.6"
+    "sinon": "^13.0.1",
+    "supertest": "^6.2.2"
   }
 }
