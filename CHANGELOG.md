@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/jasonsites/nsk-koa/compare/v1.2.0...v1.2.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* **http:** moves tracing headers registration to app config and removes auto-generation of `X-Request-ID` header ([f6b2146](https://github.com/jasonsites/nsk-koa/commit/f6b21466f9c698809deae7bd02d2d329f245b610))
+* **security:** updates dependencies ([09b3ee7](https://github.com/jasonsites/nsk-koa/commit/09b3ee74ca0a2ffe3ab5cc00a7f9548692663960))
+
 ## [1.2.0](https://github.com/jasonsites/nsk-koa/compare/v1.1.1...v1.2.0) (2021-10-12)
 
 
